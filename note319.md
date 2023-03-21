@@ -34,7 +34,22 @@ StateDB和stateObject都使用Database存放了自己的Trie，他们使用的�
 
 ![hierarchy](images/hierarchy.png)
 
+## 基本需要实现的功能（接口）
+
+stateDB对象就是对以太坊状态MPT进行管理的对象。其管理功能包括：
+1. 初始化：New
+2. 增加：StateDB.createObject
+3. 删除：StateDB.Suicide
+4. 修改：StateDB.AddBalance
+5. 查询：StateDB.GetBalance
+6. 拍摄快照：StateDB.Snopshot
+7. 恢复快照：StateDB.RevertToSnopshot
+8. 将状态写入状态树：StateDB.Finalise
+9. 获得树根：StateDB.IntermediateRoot
+10. 将状态写入数据库：StateDB.Commit
+
 ## Ref
 - https://learnblockchain.cn/books/geth/part3/statedb.html
 - https://www.jianshu.com/p/db49103c8ee8
 - https://www.bcskill.com/index.php/archives/1160.html
+- https://blog.csdn.net/lj900911/article/details/85047957
