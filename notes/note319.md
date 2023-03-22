@@ -8,17 +8,17 @@
 
 世界状态(state)由无数的账户信息组成，每个账户均存在一个唯一的账户信息。账户信息中存储着账户余额、Nonce、合约哈希、账户状态等内容，每个账户信息通过账户地址影射。 从创世状态开始，随着将交易作为输入信息，在预设协议标准（条件）下将世界态推进到下一个新的状态中。
 
-![state](images/state.png)
+![state](../images/state.png)
 
 ## StateDB是什么
 
 以太坊是基于账户体系实现的，块通过 parentHash 链在一起，每个块都包含若干交易，每个交易都包含账户 from 和 to(部署合约时除外),全部的账户凑在一起就是组成了 StateDB，每个块的 StateDB 都用一颗叫做 Trie 的树来组织账户信息，具体结构如下图：
 
-![statedb](images/statedb.png)
+![statedb](../images/statedb.png)
 
 StateDB通常会存储在磁盘上，通过 Block.StateRoot 来进行加载，StateRoot 是树根，也是 leveldb 中的一个 key, 这个根只对应当前块的交易相关的账户信息，value 是这棵树的全部叶子节点，加载的时候会用叶子节点来构建下图中的树型结构。
 
-![trie](images/trie.png)
+![trie](../images/trie.png)
 
 ## 存储结构
 
@@ -32,7 +32,7 @@ StateDB和stateObject都使用Database存放了自己的Trie，他们使用的�
 
 因此逻辑上看他们有如下关系:
 
-![hierarchy](images/hierarchy.png)
+![hierarchy](../images/hierarchy.png)
 
 ## 基本需要实现的功能（接口）
 
