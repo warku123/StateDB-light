@@ -25,14 +25,15 @@ import (
 	"sync"
 	"time"
 
+	"statedbl/common"
+	"statedbl/core/rawdb"
+	"statedbl/core/types"
+	"statedbl/ethdb"
+	"statedbl/log"
+	"statedbl/metrics"
+	"statedbl/rlp"
+
 	"github.com/VictoriaMetrics/fastcache"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/rlp"
 )
 
 var (

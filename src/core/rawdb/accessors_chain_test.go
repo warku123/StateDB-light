@@ -26,12 +26,12 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
 	"golang.org/x/crypto/sha3"
+	"statedbl/common"
+	"statedbl/core/types"
+	"statedbl/crypto"
+	"statedbl/params"
+	"statedbl/rlp"
 )
 
 // Tests block header storage and retrieval operations.

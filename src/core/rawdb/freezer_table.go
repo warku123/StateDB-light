@@ -27,9 +27,10 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
+	"statedbl/common"
+	"statedbl/log"
+	"statedbl/metrics"
+
 	"github.com/golang/snappy"
 )
 

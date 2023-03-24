@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/ethereum/go-ethereum/rlp"
+	"statedbl/rlp"
 )
 
 type MyCoolType struct {
