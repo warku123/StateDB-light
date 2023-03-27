@@ -156,8 +156,8 @@ func NewCustom(file string, namespace string, customize func(options *opt.Option
 func configureOptions(customizeFn func(*opt.Options)) *opt.Options {
 	// Set default options
 	options := &opt.Options{
-		Filter:                 filter.NewBloomFilter(10),
-		DisableSeeksCompaction: true,
+		Filter: filter.NewBloomFilter(10),
+		// DisableSeeksCompaction: true,
 	}
 	// Allow caller to make custom modifications to the options
 	if customizeFn != nil {
@@ -218,9 +218,12 @@ func (db *Database) NewBatch() ethdb.Batch {
 
 // NewBatchWithSize creates a write-only database batch with pre-allocated buffer.
 func (db *Database) NewBatchWithSize(size int) ethdb.Batch {
+	bat := new(leveldb.Batch)
+	bat.Load(make([]byte, 0, size))
+
 	return &batch{
 		db: db.db,
-		b:  leveldb.MakeBatch(size),
+		b:  bat,
 	}
 }
 
