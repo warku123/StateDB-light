@@ -25,6 +25,7 @@ func TestMemoryDB(t *testing.T) {
 	statedb.SetBalance(deployer, big.NewInt(1<<40))
 
 	t.Logf("%ld", statedb.GetBalance(deployer))
+	statedb.Commit(true)
 }
 
 func TestLeveldb(t *testing.T) {
@@ -49,7 +50,7 @@ func TestLeveldb(t *testing.T) {
 	statedb.SetBalance(deployer, big.NewInt(1<<40))
 
 	t.Logf("%ld", statedb.GetBalance(deployer))
-
+	statedb.Commit(true)
 	is_suicide := statedb.Suicide(deployer)
 	t.Logf("%t", is_suicide)
 }
