@@ -32,7 +32,7 @@ StateDB和stateObject都使用Database存放了自己的Trie，他们使用的�
 
 因此逻辑上看他们有如下关系:
 
-![hierarchy](../images/hierarchy.png)
+![hierarchy2](../images/hierarchy.webp)
 
 ## 基本需要实现的功能（接口）
 
