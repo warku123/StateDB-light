@@ -1,0 +1,14 @@
+type (
+	// 用户登录
+	SuicideRequest {
+		Addr string `json:"address"`
+	}
+	SuicideResponse {
+		Is_suicide bool `json:"is_suicide"`
+	}
+)
+
+service Sdb {
+	@handler Suicide
+	post /api/user/suicide(SuicideRequest) returns (SuicideResponse)
+}

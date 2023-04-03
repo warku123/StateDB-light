@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package sdb;
+
+option go_package = "./sdb";
+
+message SuicideRequest {
+    string Addr = 1;
+}
+message SuicideResponse {
+    bool Is_suicide = 1;
+}
+
+service User {
+    rpc Suicide(SuicideRequest) returns(SuicideResponse);
+}
