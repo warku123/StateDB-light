@@ -1,4 +1,34 @@
 type (
+	CreateAccountRequest {
+		Addr string `json:"address"`
+	}
+	CreateAccountResponse {
+		Empty bool `json:"empty"`
+	}
+
+	SubBalanceRequest {
+		Addr   string `json:"address"`
+		Amount int64  `json:"amount"`
+	}
+	SubBalanceResponse {
+		Empty bool `json:"empty"`
+	}
+
+	AddBalanceRequest {
+		Addr   string `json:"address"`
+		Amount int64  `json:"amount"`
+	}
+	AddBalanceResponse {
+		Empty bool `json:"empty"`
+	}
+
+	GetBalanceRequest {
+		Addr string `json:"address"`
+	}
+	GetBalanceResponse {
+		Amount int64 `json:"amount"`
+	}
+
 	SuicideRequest {
 		Addr string `json:"address"`
 	}
@@ -8,6 +38,18 @@ type (
 )
 
 service Sdb {
+	@handler CreateAccount
+	post /api/sdb/createaccount(CreateAccountRequest) returns(CreateAccountResponse)
+	
+	@handler SubBalance
+	post /api/sdb/subbalance(SubBalanceRequest) returns(SubBalanceResponse)
+	
+	@handler AddBalance
+	post /api/sdb/addbalance(AddBalanceRequest) returns(AddBalanceResponse)
+	
+	@handler GetBalance
+	post /api/sdb/getbalance(GetBalanceRequest) returns(GetBalanceResponse)
+	
 	@handler Suicide
-	post /api/user/suicide(SuicideRequest) returns (SuicideResponse)
+	post /api/sdb/suicide(SuicideRequest) returns (SuicideResponse)
 }

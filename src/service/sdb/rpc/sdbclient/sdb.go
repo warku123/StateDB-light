@@ -13,10 +13,22 @@ import (
 )
 
 type (
-	SuicideRequest  = sdb.SuicideRequest
-	SuicideResponse = sdb.SuicideResponse
+	AddBalanceRequest     = sdb.AddBalanceRequest
+	AddBalanceResponse    = sdb.AddBalanceResponse
+	CreateAccountRequest  = sdb.CreateAccountRequest
+	CreateAccountResponse = sdb.CreateAccountResponse
+	GetBalanceRequest     = sdb.GetBalanceRequest
+	GetBalanceResponse    = sdb.GetBalanceResponse
+	SubBalanceRequest     = sdb.SubBalanceRequest
+	SubBalanceResponse    = sdb.SubBalanceResponse
+	SuicideRequest        = sdb.SuicideRequest
+	SuicideResponse       = sdb.SuicideResponse
 
 	Sdb interface {
+		CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
+		SubBalance(ctx context.Context, in *SubBalanceRequest, opts ...grpc.CallOption) (*SubBalanceResponse, error)
+		AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error)
+		GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 		Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
 	}
 
@@ -29,6 +41,26 @@ func NewSdb(cli zrpc.Client) Sdb {
 	return &defaultSdb{
 		cli: cli,
 	}
+}
+
+func (m *defaultSdb) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.CreateAccount(ctx, in, opts...)
+}
+
+func (m *defaultSdb) SubBalance(ctx context.Context, in *SubBalanceRequest, opts ...grpc.CallOption) (*SubBalanceResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.SubBalance(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddBalance(ctx, in, opts...)
+}
+
+func (m *defaultSdb) GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.GetBalance(ctx, in, opts...)
 }
 
 func (m *defaultSdb) Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error) {

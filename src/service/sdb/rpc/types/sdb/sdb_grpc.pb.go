@@ -19,13 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Sdb_Suicide_FullMethodName = "/sdb.Sdb/Suicide"
+	Sdb_CreateAccount_FullMethodName = "/sdb.Sdb/CreateAccount"
+	Sdb_SubBalance_FullMethodName    = "/sdb.Sdb/SubBalance"
+	Sdb_AddBalance_FullMethodName    = "/sdb.Sdb/AddBalance"
+	Sdb_GetBalance_FullMethodName    = "/sdb.Sdb/GetBalance"
+	Sdb_Suicide_FullMethodName       = "/sdb.Sdb/Suicide"
 )
 
 // SdbClient is the client API for Sdb service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SdbClient interface {
+	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
+	SubBalance(ctx context.Context, in *SubBalanceRequest, opts ...grpc.CallOption) (*SubBalanceResponse, error)
+	AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error)
+	GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 	Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
 }
 
@@ -35,6 +43,42 @@ type sdbClient struct {
 
 func NewSdbClient(cc grpc.ClientConnInterface) SdbClient {
 	return &sdbClient{cc}
+}
+
+func (c *sdbClient) CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error) {
+	out := new(CreateAccountResponse)
+	err := c.cc.Invoke(ctx, Sdb_CreateAccount_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SubBalance(ctx context.Context, in *SubBalanceRequest, opts ...grpc.CallOption) (*SubBalanceResponse, error) {
+	out := new(SubBalanceResponse)
+	err := c.cc.Invoke(ctx, Sdb_SubBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error) {
+	out := new(AddBalanceResponse)
+	err := c.cc.Invoke(ctx, Sdb_AddBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error) {
+	out := new(GetBalanceResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *sdbClient) Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error) {
@@ -50,6 +94,10 @@ func (c *sdbClient) Suicide(ctx context.Context, in *SuicideRequest, opts ...grp
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
 type SdbServer interface {
+	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
+	SubBalance(context.Context, *SubBalanceRequest) (*SubBalanceResponse, error)
+	AddBalance(context.Context, *AddBalanceRequest) (*AddBalanceResponse, error)
+	GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error)
 	Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
@@ -58,6 +106,18 @@ type SdbServer interface {
 type UnimplementedSdbServer struct {
 }
 
+func (UnimplementedSdbServer) CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAccount not implemented")
+}
+func (UnimplementedSdbServer) SubBalance(context.Context, *SubBalanceRequest) (*SubBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubBalance not implemented")
+}
+func (UnimplementedSdbServer) AddBalance(context.Context, *AddBalanceRequest) (*AddBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddBalance not implemented")
+}
+func (UnimplementedSdbServer) GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBalance not implemented")
+}
 func (UnimplementedSdbServer) Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Suicide not implemented")
 }
@@ -72,6 +132,78 @@ type UnsafeSdbServer interface {
 
 func RegisterSdbServer(s grpc.ServiceRegistrar, srv SdbServer) {
 	s.RegisterService(&Sdb_ServiceDesc, srv)
+}
+
+func _Sdb_CreateAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAccountRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).CreateAccount(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_CreateAccount_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).CreateAccount(ctx, req.(*CreateAccountRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SubBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SubBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SubBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SubBalance(ctx, req.(*SubBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_AddBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).AddBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_AddBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).AddBalance(ctx, req.(*AddBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_GetBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetBalance(ctx, req.(*GetBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Sdb_Suicide_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -99,6 +231,22 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "sdb.Sdb",
 	HandlerType: (*SdbServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateAccount",
+			Handler:    _Sdb_CreateAccount_Handler,
+		},
+		{
+			MethodName: "SubBalance",
+			Handler:    _Sdb_SubBalance_Handler,
+		},
+		{
+			MethodName: "AddBalance",
+			Handler:    _Sdb_AddBalance_Handler,
+		},
+		{
+			MethodName: "GetBalance",
+			Handler:    _Sdb_GetBalance_Handler,
+		},
 		{
 			MethodName: "Suicide",
 			Handler:    _Sdb_Suicide_Handler,

@@ -14,7 +14,27 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 		[]rest.Route{
 			{
 				Method:  http.MethodPost,
-				Path:    "/api/user/suicide",
+				Path:    "/api/sdb/createaccount",
+				Handler: CreateAccountHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/subbalance",
+				Handler: SubBalanceHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addbalance",
+				Handler: AddBalanceHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/getbalance",
+				Handler: GetBalanceHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/suicide",
 				Handler: SuicideHandler(serverCtx),
 			},
 		},

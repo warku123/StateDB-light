@@ -22,6 +22,26 @@ func NewSdbServer(svcCtx *svc.ServiceContext) *SdbServer {
 	}
 }
 
+func (s *SdbServer) CreateAccount(ctx context.Context, in *sdb.CreateAccountRequest) (*sdb.CreateAccountResponse, error) {
+	l := logic.NewCreateAccountLogic(ctx, s.svcCtx)
+	return l.CreateAccount(in)
+}
+
+func (s *SdbServer) SubBalance(ctx context.Context, in *sdb.SubBalanceRequest) (*sdb.SubBalanceResponse, error) {
+	l := logic.NewSubBalanceLogic(ctx, s.svcCtx)
+	return l.SubBalance(in)
+}
+
+func (s *SdbServer) AddBalance(ctx context.Context, in *sdb.AddBalanceRequest) (*sdb.AddBalanceResponse, error) {
+	l := logic.NewAddBalanceLogic(ctx, s.svcCtx)
+	return l.AddBalance(in)
+}
+
+func (s *SdbServer) GetBalance(ctx context.Context, in *sdb.GetBalanceRequest) (*sdb.GetBalanceResponse, error) {
+	l := logic.NewGetBalanceLogic(ctx, s.svcCtx)
+	return l.GetBalance(in)
+}
+
 func (s *SdbServer) Suicide(ctx context.Context, in *sdb.SuicideRequest) (*sdb.SuicideResponse, error) {
 	l := logic.NewSuicideLogic(ctx, s.svcCtx)
 	return l.Suicide(in)

@@ -4,6 +4,36 @@ package sdb;
 
 option go_package = "./sdb";
 
+message CreateAccountRequest {
+    string Addr = 1;
+}
+message CreateAccountResponse {
+    bool Empty = 1;
+}
+
+message SubBalanceRequest {
+    string Addr = 1;
+    int64 Amount = 2;
+}
+message SubBalanceResponse {
+    bool Empty = 1;
+}
+
+message AddBalanceRequest {
+    string Addr = 1;
+    int64 Amount = 2;
+}
+message AddBalanceResponse {
+    bool Empty = 1;
+}
+
+message GetBalanceRequest {
+    string Addr = 1;
+}
+message GetBalanceResponse {
+    int64 Amount = 1;
+}
+
 message SuicideRequest {
     string Addr = 1;
 }
@@ -12,5 +42,9 @@ message SuicideResponse {
 }
 
 service Sdb {
+    rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
+    rpc SubBalance(SubBalanceRequest) returns(SubBalanceResponse);
+    rpc AddBalance(AddBalanceRequest) returns(AddBalanceResponse);
+    rpc GetBalance(GetBalanceRequest) returns(GetBalanceResponse);
     rpc Suicide(SuicideRequest) returns(SuicideResponse);
 }
