@@ -11,18 +11,18 @@ import (
 	"statedbl/service/sdb/rpc/types/sdb"
 )
 
-type UserServer struct {
+type SdbServer struct {
 	svcCtx *svc.ServiceContext
-	sdb.UnimplementedUserServer
+	sdb.UnimplementedSdbServer
 }
 
-func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
-	return &UserServer{
+func NewSdbServer(svcCtx *svc.ServiceContext) *SdbServer {
+	return &SdbServer{
 		svcCtx: svcCtx,
 	}
 }
 
-func (s *UserServer) Suicide(ctx context.Context, in *sdb.SuicideRequest) (*sdb.SuicideResponse, error) {
+func (s *SdbServer) Suicide(ctx context.Context, in *sdb.SuicideRequest) (*sdb.SuicideResponse, error) {
 	l := logic.NewSuicideLogic(ctx, s.svcCtx)
 	return l.Suicide(in)
 }

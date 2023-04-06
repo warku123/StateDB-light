@@ -1,5 +1,4 @@
 type (
-	// 用户登录
 	SuicideRequest {
 		Addr string `json:"address"`
 	}

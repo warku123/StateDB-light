@@ -11,6 +11,6 @@ message SuicideResponse {
     bool Is_suicide = 1;
 }
 
-service User {
+service Sdb {
     rpc Suicide(SuicideRequest) returns(SuicideResponse);
 }

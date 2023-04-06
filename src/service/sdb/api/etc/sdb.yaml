@@ -1,3 +1,16 @@
 Name: Sdb
 Host: 0.0.0.0
-Port: 8888
+Port: 8000
+
+BottomDB:
+  Is_memory: true
+  LevelDB_dir : /leveldb/chaindata
+
+UpperDB:
+  Hash: 
+
+SdbRpc:
+  Etcd:
+    Hosts:
+    - etcd:2379
+    Key: sdb.rpc
