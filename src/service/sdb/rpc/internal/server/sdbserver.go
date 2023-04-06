@@ -46,3 +46,13 @@ func (s *SdbServer) Suicide(ctx context.Context, in *sdb.SuicideRequest) (*sdb.S
 	l := logic.NewSuicideLogic(ctx, s.svcCtx)
 	return l.Suicide(in)
 }
+
+func (s *SdbServer) GetNonce(ctx context.Context, in *sdb.GetNonceRequest) (*sdb.GetNonceResponse, error) {
+	l := logic.NewGetNonceLogic(ctx, s.svcCtx)
+	return l.GetNonce(in)
+}
+
+func (s *SdbServer) SetNonce(ctx context.Context, in *sdb.SetNonceRequest) (*sdb.SetNonceResponse, error) {
+	l := logic.NewSetNonceLogic(ctx, s.svcCtx)
+	return l.SetNonce(in)
+}

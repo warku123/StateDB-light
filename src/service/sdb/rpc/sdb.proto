@@ -41,10 +41,27 @@ message SuicideResponse {
     bool Is_suicide = 1;
 }
 
+message GetNonceRequest {
+    string Addr = 1;
+}
+message GetNonceResponse {
+    uint64 Amount = 1;
+}
+
+message SetNonceRequest { 
+    string Addr = 1;
+    uint64 Amount = 2;
+}
+message SetNonceResponse {
+    bool Empty = 1;
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
     rpc SubBalance(SubBalanceRequest) returns(SubBalanceResponse);
     rpc AddBalance(AddBalanceRequest) returns(AddBalanceResponse);
     rpc GetBalance(GetBalanceRequest) returns(GetBalanceResponse);
     rpc Suicide(SuicideRequest) returns(SuicideResponse);
+    rpc GetNonce(GetNonceRequest) returns(GetNonceResponse);
+    rpc SetNonce(SetNonceRequest) returns(SetNonceResponse);
 }

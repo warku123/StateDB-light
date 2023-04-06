@@ -10,4 +10,4 @@ BottomDB:
   LevelDB_dir : /leveldb/chaindata
 
 UpperDB:
-  Hash: 
+  Hash: "0x0000000000000000000000006465706c6f796572"

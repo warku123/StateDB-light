@@ -24,6 +24,8 @@ const (
 	Sdb_AddBalance_FullMethodName    = "/sdb.Sdb/AddBalance"
 	Sdb_GetBalance_FullMethodName    = "/sdb.Sdb/GetBalance"
 	Sdb_Suicide_FullMethodName       = "/sdb.Sdb/Suicide"
+	Sdb_GetNonce_FullMethodName      = "/sdb.Sdb/GetNonce"
+	Sdb_SetNonce_FullMethodName      = "/sdb.Sdb/SetNonce"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -35,6 +37,8 @@ type SdbClient interface {
 	AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error)
 	GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 	Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
+	GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error)
+	SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error)
 }
 
 type sdbClient struct {
@@ -90,6 +94,24 @@ func (c *sdbClient) Suicide(ctx context.Context, in *SuicideRequest, opts ...grp
 	return out, nil
 }
 
+func (c *sdbClient) GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error) {
+	out := new(GetNonceResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetNonce_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error) {
+	out := new(SetNonceResponse)
+	err := c.cc.Invoke(ctx, Sdb_SetNonce_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -99,6 +121,8 @@ type SdbServer interface {
 	AddBalance(context.Context, *AddBalanceRequest) (*AddBalanceResponse, error)
 	GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error)
 	Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error)
+	GetNonce(context.Context, *GetNonceRequest) (*GetNonceResponse, error)
+	SetNonce(context.Context, *SetNonceRequest) (*SetNonceResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -120,6 +144,12 @@ func (UnimplementedSdbServer) GetBalance(context.Context, *GetBalanceRequest) (*
 }
 func (UnimplementedSdbServer) Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Suicide not implemented")
+}
+func (UnimplementedSdbServer) GetNonce(context.Context, *GetNonceRequest) (*GetNonceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNonce not implemented")
+}
+func (UnimplementedSdbServer) SetNonce(context.Context, *SetNonceRequest) (*SetNonceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetNonce not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -224,6 +254,42 @@ func _Sdb_Suicide_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_GetNonce_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetNonceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetNonce(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetNonce_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetNonce(ctx, req.(*GetNonceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SetNonce_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetNonceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SetNonce(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SetNonce_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SetNonce(ctx, req.(*SetNonceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -250,6 +316,14 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Suicide",
 			Handler:    _Sdb_Suicide_Handler,
+		},
+		{
+			MethodName: "GetNonce",
+			Handler:    _Sdb_GetNonce_Handler,
+		},
+		{
+			MethodName: "SetNonce",
+			Handler:    _Sdb_SetNonce_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

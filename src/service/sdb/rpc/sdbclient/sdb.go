@@ -19,6 +19,10 @@ type (
 	CreateAccountResponse = sdb.CreateAccountResponse
 	GetBalanceRequest     = sdb.GetBalanceRequest
 	GetBalanceResponse    = sdb.GetBalanceResponse
+	GetNonceRequest       = sdb.GetNonceRequest
+	GetNonceResponse      = sdb.GetNonceResponse
+	SetNonceRequest       = sdb.SetNonceRequest
+	SetNonceResponse      = sdb.SetNonceResponse
 	SubBalanceRequest     = sdb.SubBalanceRequest
 	SubBalanceResponse    = sdb.SubBalanceResponse
 	SuicideRequest        = sdb.SuicideRequest
@@ -30,6 +34,8 @@ type (
 		AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error)
 		GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 		Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
+		GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error)
+		SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error)
 	}
 
 	defaultSdb struct {
@@ -66,4 +72,14 @@ func (m *defaultSdb) GetBalance(ctx context.Context, in *GetBalanceRequest, opts
 func (m *defaultSdb) Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.Suicide(ctx, in, opts...)
+}
+
+func (m *defaultSdb) GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.GetNonce(ctx, in, opts...)
+}
+
+func (m *defaultSdb) SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.SetNonce(ctx, in, opts...)
 }
