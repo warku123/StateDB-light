@@ -42,3 +42,20 @@ type SuicideRequest struct {
 type SuicideResponse struct {
 	Is_suicide bool `json:"is_suicide"`
 }
+
+type GetNonceRequest struct {
+	Addr string `json:"address"`
+}
+
+type GetNonceResponse struct {
+	Amount uint64 `json:"amount"`
+}
+
+type SetNonceRequest struct {
+	Addr   string `json:"address"`
+	Amount uint64 `json:"amount"`
+}
+
+type SetNonceResponse struct {
+	Empty bool `json:"empty"`
+}

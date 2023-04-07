@@ -1,6 +1,6 @@
 Name: Sdb
 Host: 0.0.0.0
-Port: 8000
+Port: 8888
 
 SdbRpc:
   Etcd:

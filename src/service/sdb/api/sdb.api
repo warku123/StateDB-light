@@ -35,6 +35,21 @@ type (
 	SuicideResponse {
 		Is_suicide bool `json:"is_suicide"`
 	}
+
+	GetNonceRequest {
+		Addr string `json:"address"`
+	}
+	GetNonceResponse {
+		Amount uint64 `json:"amount"`
+	}
+
+	SetNonceRequest {
+		Addr   string `json:"address"`
+		Amount uint64   `json:"amount"`
+	}
+	SetNonceResponse {
+		Empty bool `json:"empty"`
+	}
 )
 
 service Sdb {
@@ -51,5 +66,11 @@ service Sdb {
 	post /api/sdb/getbalance(GetBalanceRequest) returns(GetBalanceResponse)
 	
 	@handler Suicide
-	post /api/sdb/suicide(SuicideRequest) returns (SuicideResponse)
+	post /api/sdb/suicide(SuicideRequest) returns(SuicideResponse)
+	
+	@handler GetNonce
+	post /api/sdb/getnonce(GetNonceRequest) returns(GetNonceResponse)
+	
+	@handler SetNonce
+	post /api/sdb/setnonce(SetNonceRequest) returns(SetNonceResponse)
 }
