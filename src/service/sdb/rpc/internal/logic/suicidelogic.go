@@ -28,7 +28,7 @@ func NewSuicideLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SuicideLo
 func (l *SuicideLogic) Suicide(in *sdb.SuicideRequest) (*sdb.SuicideResponse, error) {
 	// todo: add your logic here and delete this line
 	real_addr := common.BytesToAddress([]byte(in.Addr))
-	is_suicide := l.svcCtx.Config.StateDB.Suicide(real_addr)
+	is_suicide := l.svcCtx.Statedb.Suicide(real_addr)
 
 	return &sdb.SuicideResponse{IsSuicide: is_suicide}, nil
 }

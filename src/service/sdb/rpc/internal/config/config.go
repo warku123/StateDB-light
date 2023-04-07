@@ -1,8 +1,6 @@
 package config
 
 import (
-	"statedbl/core/state"
-
 	"github.com/zeromicro/go-zero/zrpc"
 )
 
@@ -17,6 +15,4 @@ type Config struct {
 	UpperDB struct {
 		Hash string
 	}
-
-	StateDB *state.StateDB
 }

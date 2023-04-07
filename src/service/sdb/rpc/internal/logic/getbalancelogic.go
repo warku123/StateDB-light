@@ -27,7 +27,7 @@ func NewGetBalanceLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetBal
 func (l *GetBalanceLogic) GetBalance(in *sdb.GetBalanceRequest) (*sdb.GetBalanceResponse, error) {
 	// todo: add your logic here and delete this line
 	real_addr := common.BytesToAddress([]byte(in.Addr))
-	amount := l.svcCtx.Config.StateDB.GetBalance(real_addr)
+	amount := l.svcCtx.Statedb.GetBalance(real_addr)
 
 	return &sdb.GetBalanceResponse{Amount: amount.Int64()}, nil
 }

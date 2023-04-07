@@ -28,7 +28,7 @@ func NewSubBalanceLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SubBal
 func (l *SubBalanceLogic) SubBalance(in *sdb.SubBalanceRequest) (*sdb.SubBalanceResponse, error) {
 	// todo: add your logic here and delete this line
 	real_addr := common.BytesToAddress([]byte(in.Addr))
-	l.svcCtx.Config.StateDB.SubBalance(real_addr, big.NewInt(in.Amount))
+	l.svcCtx.Statedb.SubBalance(real_addr, big.NewInt(in.Amount))
 
 	return &sdb.SubBalanceResponse{Empty: true}, nil
 }

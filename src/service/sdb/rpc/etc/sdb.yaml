@@ -7,7 +7,7 @@ Etcd:
 
 BottomDB:
   Is_memory: true
-  LevelDB_dir : /leveldb/chaindata
+  LevelDB_dir : "/leveldb/chaindata"
 
 UpperDB:
   Hash: "0x0000000000000000000000006465706c6f796572"
