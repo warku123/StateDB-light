@@ -506,6 +506,100 @@ func (x *SuicideResponse) GetIsSuicide() bool {
 	return false
 }
 
+type HasSuicidedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Addr string `protobuf:"bytes,1,opt,name=Addr,proto3" json:"Addr,omitempty"`
+}
+
+func (x *HasSuicidedRequest) Reset() {
+	*x = HasSuicidedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HasSuicidedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HasSuicidedRequest) ProtoMessage() {}
+
+func (x *HasSuicidedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HasSuicidedRequest.ProtoReflect.Descriptor instead.
+func (*HasSuicidedRequest) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *HasSuicidedRequest) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+type HasSuicidedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	IsSuicide bool `protobuf:"varint,1,opt,name=Is_suicide,json=IsSuicide,proto3" json:"Is_suicide,omitempty"`
+}
+
+func (x *HasSuicidedResponse) Reset() {
+	*x = HasSuicidedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HasSuicidedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HasSuicidedResponse) ProtoMessage() {}
+
+func (x *HasSuicidedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HasSuicidedResponse.ProtoReflect.Descriptor instead.
+func (*HasSuicidedResponse) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *HasSuicidedResponse) GetIsSuicide() bool {
+	if x != nil {
+		return x.IsSuicide
+	}
+	return false
+}
+
 type GetNonceRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -517,7 +611,7 @@ type GetNonceRequest struct {
 func (x *GetNonceRequest) Reset() {
 	*x = GetNonceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[10]
+		mi := &file_rpc_sdb_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -530,7 +624,7 @@ func (x *GetNonceRequest) String() string {
 func (*GetNonceRequest) ProtoMessage() {}
 
 func (x *GetNonceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[10]
+	mi := &file_rpc_sdb_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -543,7 +637,7 @@ func (x *GetNonceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNonceRequest.ProtoReflect.Descriptor instead.
 func (*GetNonceRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{10}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetNonceRequest) GetAddr() string {
@@ -564,7 +658,7 @@ type GetNonceResponse struct {
 func (x *GetNonceResponse) Reset() {
 	*x = GetNonceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[11]
+		mi := &file_rpc_sdb_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -577,7 +671,7 @@ func (x *GetNonceResponse) String() string {
 func (*GetNonceResponse) ProtoMessage() {}
 
 func (x *GetNonceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[11]
+	mi := &file_rpc_sdb_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -590,7 +684,7 @@ func (x *GetNonceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetNonceResponse.ProtoReflect.Descriptor instead.
 func (*GetNonceResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{11}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetNonceResponse) GetAmount() uint64 {
@@ -612,7 +706,7 @@ type SetNonceRequest struct {
 func (x *SetNonceRequest) Reset() {
 	*x = SetNonceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[12]
+		mi := &file_rpc_sdb_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -625,7 +719,7 @@ func (x *SetNonceRequest) String() string {
 func (*SetNonceRequest) ProtoMessage() {}
 
 func (x *SetNonceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[12]
+	mi := &file_rpc_sdb_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -638,7 +732,7 @@ func (x *SetNonceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetNonceRequest.ProtoReflect.Descriptor instead.
 func (*SetNonceRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{12}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *SetNonceRequest) GetAddr() string {
@@ -666,7 +760,7 @@ type SetNonceResponse struct {
 func (x *SetNonceResponse) Reset() {
 	*x = SetNonceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[13]
+		mi := &file_rpc_sdb_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -679,7 +773,7 @@ func (x *SetNonceResponse) String() string {
 func (*SetNonceResponse) ProtoMessage() {}
 
 func (x *SetNonceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[13]
+	mi := &file_rpc_sdb_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -692,7 +786,7 @@ func (x *SetNonceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetNonceResponse.ProtoReflect.Descriptor instead.
 func (*SetNonceResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{13}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *SetNonceResponse) GetEmpty() bool {
@@ -713,7 +807,7 @@ type GetCodeHashRequest struct {
 func (x *GetCodeHashRequest) Reset() {
 	*x = GetCodeHashRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[14]
+		mi := &file_rpc_sdb_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -726,7 +820,7 @@ func (x *GetCodeHashRequest) String() string {
 func (*GetCodeHashRequest) ProtoMessage() {}
 
 func (x *GetCodeHashRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[14]
+	mi := &file_rpc_sdb_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -739,7 +833,7 @@ func (x *GetCodeHashRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeHashRequest.ProtoReflect.Descriptor instead.
 func (*GetCodeHashRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{14}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetCodeHashRequest) GetAddr() string {
@@ -760,7 +854,7 @@ type GetCodeHashResponse struct {
 func (x *GetCodeHashResponse) Reset() {
 	*x = GetCodeHashResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[15]
+		mi := &file_rpc_sdb_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -773,7 +867,7 @@ func (x *GetCodeHashResponse) String() string {
 func (*GetCodeHashResponse) ProtoMessage() {}
 
 func (x *GetCodeHashResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[15]
+	mi := &file_rpc_sdb_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -786,7 +880,7 @@ func (x *GetCodeHashResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeHashResponse.ProtoReflect.Descriptor instead.
 func (*GetCodeHashResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{15}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetCodeHashResponse) GetHash() string {
@@ -807,7 +901,7 @@ type GetCodeRequest struct {
 func (x *GetCodeRequest) Reset() {
 	*x = GetCodeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[16]
+		mi := &file_rpc_sdb_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -820,7 +914,7 @@ func (x *GetCodeRequest) String() string {
 func (*GetCodeRequest) ProtoMessage() {}
 
 func (x *GetCodeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[16]
+	mi := &file_rpc_sdb_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -833,7 +927,7 @@ func (x *GetCodeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeRequest.ProtoReflect.Descriptor instead.
 func (*GetCodeRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{16}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetCodeRequest) GetAddr() string {
@@ -854,7 +948,7 @@ type GetCodeResponse struct {
 func (x *GetCodeResponse) Reset() {
 	*x = GetCodeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[17]
+		mi := &file_rpc_sdb_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -867,7 +961,7 @@ func (x *GetCodeResponse) String() string {
 func (*GetCodeResponse) ProtoMessage() {}
 
 func (x *GetCodeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[17]
+	mi := &file_rpc_sdb_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -880,7 +974,7 @@ func (x *GetCodeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeResponse.ProtoReflect.Descriptor instead.
 func (*GetCodeResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{17}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetCodeResponse) GetCode() string {
@@ -902,7 +996,7 @@ type SetCodeRequest struct {
 func (x *SetCodeRequest) Reset() {
 	*x = SetCodeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[18]
+		mi := &file_rpc_sdb_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -915,7 +1009,7 @@ func (x *SetCodeRequest) String() string {
 func (*SetCodeRequest) ProtoMessage() {}
 
 func (x *SetCodeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[18]
+	mi := &file_rpc_sdb_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -928,7 +1022,7 @@ func (x *SetCodeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCodeRequest.ProtoReflect.Descriptor instead.
 func (*SetCodeRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{18}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SetCodeRequest) GetAddr() string {
@@ -949,14 +1043,12 @@ type SetCodeResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
-
-	Empty bool `protobuf:"varint,1,opt,name=Empty,proto3" json:"Empty,omitempty"`
 }
 
 func (x *SetCodeResponse) Reset() {
 	*x = SetCodeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[19]
+		mi := &file_rpc_sdb_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -969,7 +1061,7 @@ func (x *SetCodeResponse) String() string {
 func (*SetCodeResponse) ProtoMessage() {}
 
 func (x *SetCodeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[19]
+	mi := &file_rpc_sdb_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -982,14 +1074,7 @@ func (x *SetCodeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetCodeResponse.ProtoReflect.Descriptor instead.
 func (*SetCodeResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *SetCodeResponse) GetEmpty() bool {
-	if x != nil {
-		return x.Empty
-	}
-	return false
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{21}
 }
 
 type GetCodeSizeRequest struct {
@@ -1003,7 +1088,7 @@ type GetCodeSizeRequest struct {
 func (x *GetCodeSizeRequest) Reset() {
 	*x = GetCodeSizeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[20]
+		mi := &file_rpc_sdb_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1016,7 +1101,7 @@ func (x *GetCodeSizeRequest) String() string {
 func (*GetCodeSizeRequest) ProtoMessage() {}
 
 func (x *GetCodeSizeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[20]
+	mi := &file_rpc_sdb_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1029,7 +1114,7 @@ func (x *GetCodeSizeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeSizeRequest.ProtoReflect.Descriptor instead.
 func (*GetCodeSizeRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{20}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetCodeSizeRequest) GetAddr() string {
@@ -1050,7 +1135,7 @@ type GetCodeSizeResponse struct {
 func (x *GetCodeSizeResponse) Reset() {
 	*x = GetCodeSizeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[21]
+		mi := &file_rpc_sdb_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1063,7 +1148,7 @@ func (x *GetCodeSizeResponse) String() string {
 func (*GetCodeSizeResponse) ProtoMessage() {}
 
 func (x *GetCodeSizeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[21]
+	mi := &file_rpc_sdb_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1076,7 +1161,7 @@ func (x *GetCodeSizeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCodeSizeResponse.ProtoReflect.Descriptor instead.
 func (*GetCodeSizeResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{21}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetCodeSizeResponse) GetSize() int32 {
@@ -1097,7 +1182,7 @@ type AddRefundRequest struct {
 func (x *AddRefundRequest) Reset() {
 	*x = AddRefundRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[22]
+		mi := &file_rpc_sdb_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1110,7 +1195,7 @@ func (x *AddRefundRequest) String() string {
 func (*AddRefundRequest) ProtoMessage() {}
 
 func (x *AddRefundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[22]
+	mi := &file_rpc_sdb_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1123,7 +1208,7 @@ func (x *AddRefundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRefundRequest.ProtoReflect.Descriptor instead.
 func (*AddRefundRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{22}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *AddRefundRequest) GetAmount() uint64 {
@@ -1142,7 +1227,7 @@ type AddRefundResponse struct {
 func (x *AddRefundResponse) Reset() {
 	*x = AddRefundResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[23]
+		mi := &file_rpc_sdb_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1155,7 +1240,7 @@ func (x *AddRefundResponse) String() string {
 func (*AddRefundResponse) ProtoMessage() {}
 
 func (x *AddRefundResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[23]
+	mi := &file_rpc_sdb_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1168,7 +1253,7 @@ func (x *AddRefundResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddRefundResponse.ProtoReflect.Descriptor instead.
 func (*AddRefundResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{23}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{25}
 }
 
 type SubRefundRequest struct {
@@ -1182,7 +1267,7 @@ type SubRefundRequest struct {
 func (x *SubRefundRequest) Reset() {
 	*x = SubRefundRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[24]
+		mi := &file_rpc_sdb_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1195,7 +1280,7 @@ func (x *SubRefundRequest) String() string {
 func (*SubRefundRequest) ProtoMessage() {}
 
 func (x *SubRefundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[24]
+	mi := &file_rpc_sdb_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1208,7 +1293,7 @@ func (x *SubRefundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubRefundRequest.ProtoReflect.Descriptor instead.
 func (*SubRefundRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{24}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *SubRefundRequest) GetAmount() uint64 {
@@ -1227,7 +1312,7 @@ type SubRefundResponse struct {
 func (x *SubRefundResponse) Reset() {
 	*x = SubRefundResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[25]
+		mi := &file_rpc_sdb_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1240,7 +1325,7 @@ func (x *SubRefundResponse) String() string {
 func (*SubRefundResponse) ProtoMessage() {}
 
 func (x *SubRefundResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[25]
+	mi := &file_rpc_sdb_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1253,7 +1338,7 @@ func (x *SubRefundResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubRefundResponse.ProtoReflect.Descriptor instead.
 func (*SubRefundResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{25}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{27}
 }
 
 type GetRefundRequest struct {
@@ -1265,7 +1350,7 @@ type GetRefundRequest struct {
 func (x *GetRefundRequest) Reset() {
 	*x = GetRefundRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[26]
+		mi := &file_rpc_sdb_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1278,7 +1363,7 @@ func (x *GetRefundRequest) String() string {
 func (*GetRefundRequest) ProtoMessage() {}
 
 func (x *GetRefundRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[26]
+	mi := &file_rpc_sdb_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1291,7 +1376,7 @@ func (x *GetRefundRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRefundRequest.ProtoReflect.Descriptor instead.
 func (*GetRefundRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{26}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{28}
 }
 
 type GetRefundResponse struct {
@@ -1305,7 +1390,7 @@ type GetRefundResponse struct {
 func (x *GetRefundResponse) Reset() {
 	*x = GetRefundResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_rpc_sdb_proto_msgTypes[27]
+		mi := &file_rpc_sdb_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1318,7 +1403,7 @@ func (x *GetRefundResponse) String() string {
 func (*GetRefundResponse) ProtoMessage() {}
 
 func (x *GetRefundResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_sdb_proto_msgTypes[27]
+	mi := &file_rpc_sdb_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,7 +1416,7 @@ func (x *GetRefundResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRefundResponse.ProtoReflect.Descriptor instead.
 func (*GetRefundResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_sdb_proto_rawDescGZIP(), []int{27}
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GetRefundResponse) GetAmount() uint64 {
@@ -1339,6 +1424,209 @@ func (x *GetRefundResponse) GetAmount() uint64 {
 		return x.Amount
 	}
 	return 0
+}
+
+type GetTransientStateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Addr string `protobuf:"bytes,1,opt,name=Addr,proto3" json:"Addr,omitempty"`
+	Key  string `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key,omitempty"`
+}
+
+func (x *GetTransientStateRequest) Reset() {
+	*x = GetTransientStateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTransientStateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransientStateRequest) ProtoMessage() {}
+
+func (x *GetTransientStateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransientStateRequest.ProtoReflect.Descriptor instead.
+func (*GetTransientStateRequest) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *GetTransientStateRequest) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+func (x *GetTransientStateRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+type GetTransientStateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Value string `protobuf:"bytes,1,opt,name=Value,proto3" json:"Value,omitempty"`
+}
+
+func (x *GetTransientStateResponse) Reset() {
+	*x = GetTransientStateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTransientStateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTransientStateResponse) ProtoMessage() {}
+
+func (x *GetTransientStateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTransientStateResponse.ProtoReflect.Descriptor instead.
+func (*GetTransientStateResponse) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *GetTransientStateResponse) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type SetTransientStateRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Addr  string `protobuf:"bytes,1,opt,name=Addr,proto3" json:"Addr,omitempty"`
+	Key   string `protobuf:"bytes,2,opt,name=Key,proto3" json:"Key,omitempty"`
+	Value string `protobuf:"bytes,3,opt,name=Value,proto3" json:"Value,omitempty"`
+}
+
+func (x *SetTransientStateRequest) Reset() {
+	*x = SetTransientStateRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[32]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetTransientStateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTransientStateRequest) ProtoMessage() {}
+
+func (x *SetTransientStateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[32]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTransientStateRequest.ProtoReflect.Descriptor instead.
+func (*SetTransientStateRequest) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *SetTransientStateRequest) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+func (x *SetTransientStateRequest) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *SetTransientStateRequest) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type SetTransientStateResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SetTransientStateResponse) Reset() {
+	*x = SetTransientStateResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[33]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetTransientStateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTransientStateResponse) ProtoMessage() {}
+
+func (x *SetTransientStateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[33]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTransientStateResponse.ProtoReflect.Descriptor instead.
+func (*SetTransientStateResponse) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{33}
 }
 
 var File_rpc_sdb_proto protoreflect.FileDescriptor
@@ -1375,6 +1663,12 @@ var file_rpc_sdb_proto_rawDesc = []byte{
 	0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x22, 0x30, 0x0a, 0x0f, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64,
 	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x49, 0x73, 0x5f,
 	0x73, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49,
+	0x73, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x22, 0x28, 0x0a, 0x12, 0x48, 0x61, 0x73, 0x53,
+	0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12,
+	0x0a, 0x04, 0x41, 0x64, 0x64, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64,
+	0x64, 0x72, 0x22, 0x34, 0x0a, 0x13, 0x48, 0x61, 0x73, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65,
+	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x49, 0x73, 0x5f,
+	0x73, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x09, 0x49,
 	0x73, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x22, 0x25, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x4e,
 	0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41,
 	0x64, 0x64, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x22,
@@ -1401,81 +1695,109 @@ var file_rpc_sdb_proto_rawDesc = []byte{
 	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41, 0x64, 0x64, 0x72,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x12, 0x12, 0x0a, 0x04,
 	0x43, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x43, 0x6f, 0x64, 0x65,
-	0x22, 0x27, 0x0a, 0x0f, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x08, 0x52, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x28, 0x0a, 0x12, 0x47, 0x65, 0x74,
-	0x43, 0x6f, 0x64, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x12, 0x0a, 0x04, 0x41, 0x64, 0x64, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41,
-	0x64, 0x64, 0x72, 0x22, 0x29, 0x0a, 0x13, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69,
-	0x7a, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69,
-	0x7a, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x22, 0x2a,
-	0x0a, 0x10, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x04, 0x52, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x41, 0x64,
-	0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
-	0x2a, 0x0a, 0x10, 0x53, 0x75, 0x62, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x04, 0x52, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x53,
-	0x75, 0x62, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x22, 0x2b, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e,
-	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x6d, 0x6f,
-	0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e,
-	0x74, 0x32, 0xd6, 0x06, 0x0a, 0x03, 0x53, 0x64, 0x62, 0x12, 0x46, 0x0a, 0x0d, 0x43, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x19, 0x2e, 0x73, 0x64, 0x62,
-	0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x53, 0x75, 0x62, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12,
-	0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x62, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75,
-	0x62, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x3d, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x16,
-	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x41, 0x64, 0x64,
-	0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x3d, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x16, 0x2e,
-	0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x42,
-	0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34,
-	0x0a, 0x07, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x12, 0x13, 0x2e, 0x73, 0x64, 0x62, 0x2e,
-	0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14,
-	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x47, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65,
-	0x12, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74,
-	0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a,
-	0x08, 0x53, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x12, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e,
-	0x53, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64,
-	0x65, 0x48, 0x61, 0x73, 0x68, 0x12, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x64, 0x65, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18,
-	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x48, 0x61, 0x73, 0x68,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x43,
-	0x6f, 0x64, 0x65, 0x12, 0x13, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64,
-	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47,
-	0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34,
-	0x0a, 0x07, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x13, 0x2e, 0x73, 0x64, 0x62, 0x2e,
-	0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14,
-	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53,
-	0x69, 0x7a, 0x65, 0x12, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64,
-	0x65, 0x53, 0x69, 0x7a, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x73,
-	0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a, 0x0a, 0x09, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66,
-	0x75, 0x6e, 0x64, 0x12, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66,
-	0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73, 0x64, 0x62,
-	0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x3a, 0x0a, 0x09, 0x53, 0x75, 0x62, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x12,
-	0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x62, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x62,
-	0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a,
-	0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x12, 0x15, 0x2e, 0x73, 0x64,
-	0x62, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75,
-	0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x07, 0x5a, 0x05, 0x2e, 0x2f,
-	0x73, 0x64, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x11, 0x0a, 0x0f, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x28, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69,
+	0x7a, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41, 0x64, 0x64,
+	0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x22, 0x29, 0x0a,
+	0x13, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x04, 0x53, 0x69, 0x7a, 0x65, 0x22, 0x2a, 0x0a, 0x10, 0x41, 0x64, 0x64, 0x52,
+	0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06,
+	0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x41, 0x6d,
+	0x6f, 0x75, 0x6e, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e,
+	0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x2a, 0x0a, 0x10, 0x53, 0x75, 0x62,
+	0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a,
+	0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x41,
+	0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x13, 0x0a, 0x11, 0x53, 0x75, 0x62, 0x52, 0x65, 0x66, 0x75,
+	0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x47, 0x65,
+	0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x2b,
+	0x0a, 0x11, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x04, 0x52, 0x06, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x40, 0x0a, 0x18, 0x47,
+	0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41, 0x64, 0x64, 0x72, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x12, 0x10, 0x0a, 0x03, 0x4b,
+	0x65, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4b, 0x65, 0x79, 0x22, 0x31, 0x0a,
+	0x19, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61,
+	0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x56, 0x61,
+	0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x22, 0x56, 0x0a, 0x18, 0x53, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74,
+	0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04,
+	0x41, 0x64, 0x64, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72,
+	0x12, 0x10, 0x0a, 0x03, 0x4b, 0x65, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x4b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x1b, 0x0a, 0x19, 0x53, 0x65, 0x74, 0x54,
+	0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xc0, 0x08, 0x0a, 0x03, 0x53, 0x64, 0x62, 0x12, 0x46, 0x0a,
+	0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x19,
+	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75,
+	0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x53, 0x75, 0x62, 0x42, 0x61, 0x6c, 0x61,
+	0x6e, 0x63, 0x65, 0x12, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x62, 0x42, 0x61, 0x6c,
+	0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64,
+	0x62, 0x2e, 0x53, 0x75, 0x62, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e,
+	0x63, 0x65, 0x12, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6c, 0x61,
+	0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64, 0x62,
+	0x2e, 0x41, 0x64, 0x64, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x3d, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63,
+	0x65, 0x12, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e,
+	0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x47, 0x65, 0x74, 0x42, 0x61, 0x6c, 0x61, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x34, 0x0a, 0x07, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x12, 0x13, 0x2e,
+	0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x48, 0x61, 0x73, 0x53,
+	0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x64, 0x12, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x48, 0x61,
+	0x73, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x18, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x48, 0x61, 0x73, 0x53, 0x75, 0x69, 0x63, 0x69, 0x64,
+	0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x47, 0x65,
+	0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x12, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74,
+	0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x73,
+	0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x53, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x12,
+	0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x4e, 0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x4e,
+	0x6f, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x40, 0x0a, 0x0b,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x48, 0x61, 0x73, 0x68, 0x12, 0x17, 0x2e, 0x73, 0x64,
+	0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f,
+	0x64, 0x65, 0x48, 0x61, 0x73, 0x68, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34,
+	0x0a, 0x07, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x13, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14,
+	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x07, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x12,
+	0x13, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x65, 0x74, 0x43, 0x6f,
+	0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x40, 0x0a, 0x0b, 0x47, 0x65,
+	0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x17, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x18, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x6f, 0x64, 0x65,
+	0x53, 0x69, 0x7a, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a, 0x0a, 0x09,
+	0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x12, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x41, 0x64, 0x64, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a, 0x0a, 0x09, 0x53, 0x75, 0x62, 0x52,
+	0x65, 0x66, 0x75, 0x6e, 0x64, 0x12, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53, 0x75, 0x62, 0x52,
+	0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73,
+	0x64, 0x62, 0x2e, 0x53, 0x75, 0x62, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x3a, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e,
+	0x64, 0x12, 0x15, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e,
+	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47,
+	0x65, 0x74, 0x52, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x52, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74,
+	0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54,
+	0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72,
+	0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x52, 0x0a, 0x11, 0x53, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73,
+	0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x2e, 0x73, 0x64, 0x62, 0x2e,
+	0x53, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53,
+	0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x07, 0x5a, 0x05, 0x2e, 0x2f, 0x73, 0x64,
+	0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1490,36 +1812,42 @@ func file_rpc_sdb_proto_rawDescGZIP() []byte {
 	return file_rpc_sdb_proto_rawDescData
 }
 
-var file_rpc_sdb_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_rpc_sdb_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_rpc_sdb_proto_goTypes = []interface{}{
-	(*CreateAccountRequest)(nil),  // 0: sdb.CreateAccountRequest
-	(*CreateAccountResponse)(nil), // 1: sdb.CreateAccountResponse
-	(*SubBalanceRequest)(nil),     // 2: sdb.SubBalanceRequest
-	(*SubBalanceResponse)(nil),    // 3: sdb.SubBalanceResponse
-	(*AddBalanceRequest)(nil),     // 4: sdb.AddBalanceRequest
-	(*AddBalanceResponse)(nil),    // 5: sdb.AddBalanceResponse
-	(*GetBalanceRequest)(nil),     // 6: sdb.GetBalanceRequest
-	(*GetBalanceResponse)(nil),    // 7: sdb.GetBalanceResponse
-	(*SuicideRequest)(nil),        // 8: sdb.SuicideRequest
-	(*SuicideResponse)(nil),       // 9: sdb.SuicideResponse
-	(*GetNonceRequest)(nil),       // 10: sdb.GetNonceRequest
-	(*GetNonceResponse)(nil),      // 11: sdb.GetNonceResponse
-	(*SetNonceRequest)(nil),       // 12: sdb.SetNonceRequest
-	(*SetNonceResponse)(nil),      // 13: sdb.SetNonceResponse
-	(*GetCodeHashRequest)(nil),    // 14: sdb.GetCodeHashRequest
-	(*GetCodeHashResponse)(nil),   // 15: sdb.GetCodeHashResponse
-	(*GetCodeRequest)(nil),        // 16: sdb.GetCodeRequest
-	(*GetCodeResponse)(nil),       // 17: sdb.GetCodeResponse
-	(*SetCodeRequest)(nil),        // 18: sdb.SetCodeRequest
-	(*SetCodeResponse)(nil),       // 19: sdb.SetCodeResponse
-	(*GetCodeSizeRequest)(nil),    // 20: sdb.GetCodeSizeRequest
-	(*GetCodeSizeResponse)(nil),   // 21: sdb.GetCodeSizeResponse
-	(*AddRefundRequest)(nil),      // 22: sdb.AddRefundRequest
-	(*AddRefundResponse)(nil),     // 23: sdb.AddRefundResponse
-	(*SubRefundRequest)(nil),      // 24: sdb.SubRefundRequest
-	(*SubRefundResponse)(nil),     // 25: sdb.SubRefundResponse
-	(*GetRefundRequest)(nil),      // 26: sdb.GetRefundRequest
-	(*GetRefundResponse)(nil),     // 27: sdb.GetRefundResponse
+	(*CreateAccountRequest)(nil),      // 0: sdb.CreateAccountRequest
+	(*CreateAccountResponse)(nil),     // 1: sdb.CreateAccountResponse
+	(*SubBalanceRequest)(nil),         // 2: sdb.SubBalanceRequest
+	(*SubBalanceResponse)(nil),        // 3: sdb.SubBalanceResponse
+	(*AddBalanceRequest)(nil),         // 4: sdb.AddBalanceRequest
+	(*AddBalanceResponse)(nil),        // 5: sdb.AddBalanceResponse
+	(*GetBalanceRequest)(nil),         // 6: sdb.GetBalanceRequest
+	(*GetBalanceResponse)(nil),        // 7: sdb.GetBalanceResponse
+	(*SuicideRequest)(nil),            // 8: sdb.SuicideRequest
+	(*SuicideResponse)(nil),           // 9: sdb.SuicideResponse
+	(*HasSuicidedRequest)(nil),        // 10: sdb.HasSuicidedRequest
+	(*HasSuicidedResponse)(nil),       // 11: sdb.HasSuicidedResponse
+	(*GetNonceRequest)(nil),           // 12: sdb.GetNonceRequest
+	(*GetNonceResponse)(nil),          // 13: sdb.GetNonceResponse
+	(*SetNonceRequest)(nil),           // 14: sdb.SetNonceRequest
+	(*SetNonceResponse)(nil),          // 15: sdb.SetNonceResponse
+	(*GetCodeHashRequest)(nil),        // 16: sdb.GetCodeHashRequest
+	(*GetCodeHashResponse)(nil),       // 17: sdb.GetCodeHashResponse
+	(*GetCodeRequest)(nil),            // 18: sdb.GetCodeRequest
+	(*GetCodeResponse)(nil),           // 19: sdb.GetCodeResponse
+	(*SetCodeRequest)(nil),            // 20: sdb.SetCodeRequest
+	(*SetCodeResponse)(nil),           // 21: sdb.SetCodeResponse
+	(*GetCodeSizeRequest)(nil),        // 22: sdb.GetCodeSizeRequest
+	(*GetCodeSizeResponse)(nil),       // 23: sdb.GetCodeSizeResponse
+	(*AddRefundRequest)(nil),          // 24: sdb.AddRefundRequest
+	(*AddRefundResponse)(nil),         // 25: sdb.AddRefundResponse
+	(*SubRefundRequest)(nil),          // 26: sdb.SubRefundRequest
+	(*SubRefundResponse)(nil),         // 27: sdb.SubRefundResponse
+	(*GetRefundRequest)(nil),          // 28: sdb.GetRefundRequest
+	(*GetRefundResponse)(nil),         // 29: sdb.GetRefundResponse
+	(*GetTransientStateRequest)(nil),  // 30: sdb.GetTransientStateRequest
+	(*GetTransientStateResponse)(nil), // 31: sdb.GetTransientStateResponse
+	(*SetTransientStateRequest)(nil),  // 32: sdb.SetTransientStateRequest
+	(*SetTransientStateResponse)(nil), // 33: sdb.SetTransientStateResponse
 }
 var file_rpc_sdb_proto_depIdxs = []int32{
 	0,  // 0: sdb.Sdb.CreateAccount:input_type -> sdb.CreateAccountRequest
@@ -1527,31 +1855,37 @@ var file_rpc_sdb_proto_depIdxs = []int32{
 	4,  // 2: sdb.Sdb.AddBalance:input_type -> sdb.AddBalanceRequest
 	6,  // 3: sdb.Sdb.GetBalance:input_type -> sdb.GetBalanceRequest
 	8,  // 4: sdb.Sdb.Suicide:input_type -> sdb.SuicideRequest
-	10, // 5: sdb.Sdb.GetNonce:input_type -> sdb.GetNonceRequest
-	12, // 6: sdb.Sdb.SetNonce:input_type -> sdb.SetNonceRequest
-	14, // 7: sdb.Sdb.GetCodeHash:input_type -> sdb.GetCodeHashRequest
-	16, // 8: sdb.Sdb.GetCode:input_type -> sdb.GetCodeRequest
-	18, // 9: sdb.Sdb.SetCode:input_type -> sdb.SetCodeRequest
-	20, // 10: sdb.Sdb.GetCodeSize:input_type -> sdb.GetCodeSizeRequest
-	22, // 11: sdb.Sdb.AddRefund:input_type -> sdb.AddRefundRequest
-	24, // 12: sdb.Sdb.SubRefund:input_type -> sdb.SubRefundRequest
-	26, // 13: sdb.Sdb.GetRefund:input_type -> sdb.GetRefundRequest
-	1,  // 14: sdb.Sdb.CreateAccount:output_type -> sdb.CreateAccountResponse
-	3,  // 15: sdb.Sdb.SubBalance:output_type -> sdb.SubBalanceResponse
-	5,  // 16: sdb.Sdb.AddBalance:output_type -> sdb.AddBalanceResponse
-	7,  // 17: sdb.Sdb.GetBalance:output_type -> sdb.GetBalanceResponse
-	9,  // 18: sdb.Sdb.Suicide:output_type -> sdb.SuicideResponse
-	11, // 19: sdb.Sdb.GetNonce:output_type -> sdb.GetNonceResponse
-	13, // 20: sdb.Sdb.SetNonce:output_type -> sdb.SetNonceResponse
-	15, // 21: sdb.Sdb.GetCodeHash:output_type -> sdb.GetCodeHashResponse
-	17, // 22: sdb.Sdb.GetCode:output_type -> sdb.GetCodeResponse
-	19, // 23: sdb.Sdb.SetCode:output_type -> sdb.SetCodeResponse
-	21, // 24: sdb.Sdb.GetCodeSize:output_type -> sdb.GetCodeSizeResponse
-	23, // 25: sdb.Sdb.AddRefund:output_type -> sdb.AddRefundResponse
-	25, // 26: sdb.Sdb.SubRefund:output_type -> sdb.SubRefundResponse
-	27, // 27: sdb.Sdb.GetRefund:output_type -> sdb.GetRefundResponse
-	14, // [14:28] is the sub-list for method output_type
-	0,  // [0:14] is the sub-list for method input_type
+	10, // 5: sdb.Sdb.HasSuicided:input_type -> sdb.HasSuicidedRequest
+	12, // 6: sdb.Sdb.GetNonce:input_type -> sdb.GetNonceRequest
+	14, // 7: sdb.Sdb.SetNonce:input_type -> sdb.SetNonceRequest
+	16, // 8: sdb.Sdb.GetCodeHash:input_type -> sdb.GetCodeHashRequest
+	18, // 9: sdb.Sdb.GetCode:input_type -> sdb.GetCodeRequest
+	20, // 10: sdb.Sdb.SetCode:input_type -> sdb.SetCodeRequest
+	22, // 11: sdb.Sdb.GetCodeSize:input_type -> sdb.GetCodeSizeRequest
+	24, // 12: sdb.Sdb.AddRefund:input_type -> sdb.AddRefundRequest
+	26, // 13: sdb.Sdb.SubRefund:input_type -> sdb.SubRefundRequest
+	28, // 14: sdb.Sdb.GetRefund:input_type -> sdb.GetRefundRequest
+	30, // 15: sdb.Sdb.GetTransientState:input_type -> sdb.GetTransientStateRequest
+	32, // 16: sdb.Sdb.SetTransientState:input_type -> sdb.SetTransientStateRequest
+	1,  // 17: sdb.Sdb.CreateAccount:output_type -> sdb.CreateAccountResponse
+	3,  // 18: sdb.Sdb.SubBalance:output_type -> sdb.SubBalanceResponse
+	5,  // 19: sdb.Sdb.AddBalance:output_type -> sdb.AddBalanceResponse
+	7,  // 20: sdb.Sdb.GetBalance:output_type -> sdb.GetBalanceResponse
+	9,  // 21: sdb.Sdb.Suicide:output_type -> sdb.SuicideResponse
+	11, // 22: sdb.Sdb.HasSuicided:output_type -> sdb.HasSuicidedResponse
+	13, // 23: sdb.Sdb.GetNonce:output_type -> sdb.GetNonceResponse
+	15, // 24: sdb.Sdb.SetNonce:output_type -> sdb.SetNonceResponse
+	17, // 25: sdb.Sdb.GetCodeHash:output_type -> sdb.GetCodeHashResponse
+	19, // 26: sdb.Sdb.GetCode:output_type -> sdb.GetCodeResponse
+	21, // 27: sdb.Sdb.SetCode:output_type -> sdb.SetCodeResponse
+	23, // 28: sdb.Sdb.GetCodeSize:output_type -> sdb.GetCodeSizeResponse
+	25, // 29: sdb.Sdb.AddRefund:output_type -> sdb.AddRefundResponse
+	27, // 30: sdb.Sdb.SubRefund:output_type -> sdb.SubRefundResponse
+	29, // 31: sdb.Sdb.GetRefund:output_type -> sdb.GetRefundResponse
+	31, // 32: sdb.Sdb.GetTransientState:output_type -> sdb.GetTransientStateResponse
+	33, // 33: sdb.Sdb.SetTransientState:output_type -> sdb.SetTransientStateResponse
+	17, // [17:34] is the sub-list for method output_type
+	0,  // [0:17] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -1684,7 +2018,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetNonceRequest); i {
+			switch v := v.(*HasSuicidedRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1696,7 +2030,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetNonceResponse); i {
+			switch v := v.(*HasSuicidedResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1708,7 +2042,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetNonceRequest); i {
+			switch v := v.(*GetNonceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1720,7 +2054,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetNonceResponse); i {
+			switch v := v.(*GetNonceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1732,7 +2066,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeHashRequest); i {
+			switch v := v.(*SetNonceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1744,7 +2078,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeHashResponse); i {
+			switch v := v.(*SetNonceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1756,7 +2090,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeRequest); i {
+			switch v := v.(*GetCodeHashRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1768,7 +2102,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeResponse); i {
+			switch v := v.(*GetCodeHashResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1780,7 +2114,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetCodeRequest); i {
+			switch v := v.(*GetCodeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1792,7 +2126,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SetCodeResponse); i {
+			switch v := v.(*GetCodeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1804,7 +2138,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeSizeRequest); i {
+			switch v := v.(*SetCodeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1816,7 +2150,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetCodeSizeResponse); i {
+			switch v := v.(*SetCodeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1828,7 +2162,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddRefundRequest); i {
+			switch v := v.(*GetCodeSizeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1840,7 +2174,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddRefundResponse); i {
+			switch v := v.(*GetCodeSizeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1852,7 +2186,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubRefundRequest); i {
+			switch v := v.(*AddRefundRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1864,7 +2198,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SubRefundResponse); i {
+			switch v := v.(*AddRefundResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1876,7 +2210,7 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRefundRequest); i {
+			switch v := v.(*SubRefundRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1888,7 +2222,79 @@ func file_rpc_sdb_proto_init() {
 			}
 		}
 		file_rpc_sdb_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SubRefundResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetRefundRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetRefundResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTransientStateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTransientStateResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetTransientStateRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SetTransientStateResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1906,7 +2312,7 @@ func file_rpc_sdb_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_rpc_sdb_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   28,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

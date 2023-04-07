@@ -36,6 +36,13 @@ type (
 		Is_suicide bool `json:"is_suicide"`
 	}
 
+	HasSuicidedRequest {
+		Addr string `json:"address"`
+	}
+	HasSuicidedResponse {
+		Is_suicide bool `json:"is_suicide"`
+	}
+
 	GetNonceRequest {
 		Addr string `json:"address"`
 	}
@@ -96,6 +103,22 @@ type (
 	GetRefundResponse {
 		Amount uint64 `json:"amount"`
 	}
+
+	GetTransientStateRequest {
+		Addr string `json:"address"`
+		Key  string `json:"key"`
+	}
+	GetTransientStateResponse {
+		Value string `json:"value"`
+	}
+
+	SetTransientStateRequest {
+		Addr  string `json:"address"`
+		Key   string `json:"key"`
+		Value string `json:"value"`
+	}
+	SetTransientStateResponse {
+	}
 )
 
 service Sdb {
@@ -113,6 +136,9 @@ service Sdb {
 	
 	@handler Suicide
 	post /api/sdb/suicide(SuicideRequest) returns(SuicideResponse)
+	
+	@handler HasSuicided
+	post /api/sdb/hassuicided(HasSuicidedRequest) returns(HasSuicidedResponse)
 	
 	@handler GetNonce
 	post /api/sdb/getnonce(GetNonceRequest) returns(GetNonceResponse)
@@ -140,4 +166,10 @@ service Sdb {
 	
 	@handler GetRefund
 	post /api/sdb/getrefund(GetRefundRequest) returns(GetRefundResponse)
+	
+	@handler GetTransientState
+	post /api/sdb/gettransientstate(GetTransientStateRequest) returns(GetTransientStateResponse)
+	
+	@handler SetTransientState
+	post /api/sdb/settransientstate(SetTransientStateRequest) returns(SetTransientStateResponse)
 }

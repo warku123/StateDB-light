@@ -47,6 +47,11 @@ func (s *SdbServer) Suicide(ctx context.Context, in *sdb.SuicideRequest) (*sdb.S
 	return l.Suicide(in)
 }
 
+func (s *SdbServer) HasSuicided(ctx context.Context, in *sdb.HasSuicidedRequest) (*sdb.HasSuicidedResponse, error) {
+	l := logic.NewHasSuicidedLogic(ctx, s.svcCtx)
+	return l.HasSuicided(in)
+}
+
 func (s *SdbServer) GetNonce(ctx context.Context, in *sdb.GetNonceRequest) (*sdb.GetNonceResponse, error) {
 	l := logic.NewGetNonceLogic(ctx, s.svcCtx)
 	return l.GetNonce(in)
@@ -90,4 +95,14 @@ func (s *SdbServer) SubRefund(ctx context.Context, in *sdb.SubRefundRequest) (*s
 func (s *SdbServer) GetRefund(ctx context.Context, in *sdb.GetRefundRequest) (*sdb.GetRefundResponse, error) {
 	l := logic.NewGetRefundLogic(ctx, s.svcCtx)
 	return l.GetRefund(in)
+}
+
+func (s *SdbServer) GetTransientState(ctx context.Context, in *sdb.GetTransientStateRequest) (*sdb.GetTransientStateResponse, error) {
+	l := logic.NewGetTransientStateLogic(ctx, s.svcCtx)
+	return l.GetTransientState(in)
+}
+
+func (s *SdbServer) SetTransientState(ctx context.Context, in *sdb.SetTransientStateRequest) (*sdb.SetTransientStateResponse, error) {
+	l := logic.NewSetTransientStateLogic(ctx, s.svcCtx)
+	return l.SetTransientState(in)
 }

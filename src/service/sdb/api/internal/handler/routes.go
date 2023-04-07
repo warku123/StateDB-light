@@ -39,6 +39,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
+				Path:    "/api/sdb/hassuicided",
+				Handler: HasSuicidedHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
 				Path:    "/api/sdb/getnonce",
 				Handler: GetNonceHandler(serverCtx),
 			},
@@ -81,6 +86,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/api/sdb/getrefund",
 				Handler: GetRefundHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/gettransientstate",
+				Handler: GetTransientStateHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/settransientstate",
+				Handler: SetTransientStateHandler(serverCtx),
 			},
 		},
 	)

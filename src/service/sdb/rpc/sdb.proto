@@ -41,6 +41,13 @@ message SuicideResponse {
     bool Is_suicide = 1;
 }
 
+message HasSuicidedRequest {
+    string Addr = 1;
+}
+message HasSuicidedResponse {
+    bool Is_suicide = 1;
+}
+
 message GetNonceRequest {
     string Addr = 1;
 }
@@ -104,6 +111,22 @@ message GetRefundResponse {
     uint64 Amount = 1;
 }
 
+message GetTransientStateRequest {
+    string Addr = 1;
+    string Key = 2;
+}
+message GetTransientStateResponse {
+    string Value = 1;
+}
+
+message SetTransientStateRequest {
+    string Addr = 1;
+    string Key = 2;
+    string Value = 3;
+}
+message SetTransientStateResponse {
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -112,6 +135,7 @@ service Sdb {
     rpc GetBalance(GetBalanceRequest) returns(GetBalanceResponse);
 
     rpc Suicide(SuicideRequest) returns(SuicideResponse);
+    rpc HasSuicided(HasSuicidedRequest) returns(HasSuicidedResponse);
 
     rpc GetNonce(GetNonceRequest) returns(GetNonceResponse);
     rpc SetNonce(SetNonceRequest) returns(SetNonceResponse);
@@ -124,4 +148,7 @@ service Sdb {
     rpc AddRefund(AddRefundRequest) returns(AddRefundResponse);
     rpc SubRefund(SubRefundRequest) returns(SubRefundResponse);
     rpc GetRefund(GetRefundRequest) returns(GetRefundResponse);
+
+    rpc GetTransientState(GetTransientStateRequest) returns(GetTransientStateResponse);
+    rpc SetTransientState(SetTransientStateRequest) returns(SetTransientStateResponse);
 }

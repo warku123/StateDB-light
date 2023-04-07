@@ -43,6 +43,14 @@ type SuicideResponse struct {
 	Is_suicide bool `json:"is_suicide"`
 }
 
+type HasSuicidedRequest struct {
+	Addr string `json:"address"`
+}
+
+type HasSuicidedResponse struct {
+	Is_suicide bool `json:"is_suicide"`
+}
+
 type GetNonceRequest struct {
 	Addr string `json:"address"`
 }
@@ -111,4 +119,22 @@ type GetRefundRequest struct {
 
 type GetRefundResponse struct {
 	Amount uint64 `json:"amount"`
+}
+
+type GetTransientStateRequest struct {
+	Addr string `json:"address"`
+	Key  string `json:"key"`
+}
+
+type GetTransientStateResponse struct {
+	Value string `json:"value"`
+}
+
+type SetTransientStateRequest struct {
+	Addr  string `json:"address"`
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}
+
+type SetTransientStateResponse struct {
 }

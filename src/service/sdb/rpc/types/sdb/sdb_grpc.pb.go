@@ -19,20 +19,23 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Sdb_CreateAccount_FullMethodName = "/sdb.Sdb/CreateAccount"
-	Sdb_SubBalance_FullMethodName    = "/sdb.Sdb/SubBalance"
-	Sdb_AddBalance_FullMethodName    = "/sdb.Sdb/AddBalance"
-	Sdb_GetBalance_FullMethodName    = "/sdb.Sdb/GetBalance"
-	Sdb_Suicide_FullMethodName       = "/sdb.Sdb/Suicide"
-	Sdb_GetNonce_FullMethodName      = "/sdb.Sdb/GetNonce"
-	Sdb_SetNonce_FullMethodName      = "/sdb.Sdb/SetNonce"
-	Sdb_GetCodeHash_FullMethodName   = "/sdb.Sdb/GetCodeHash"
-	Sdb_GetCode_FullMethodName       = "/sdb.Sdb/GetCode"
-	Sdb_SetCode_FullMethodName       = "/sdb.Sdb/SetCode"
-	Sdb_GetCodeSize_FullMethodName   = "/sdb.Sdb/GetCodeSize"
-	Sdb_AddRefund_FullMethodName     = "/sdb.Sdb/AddRefund"
-	Sdb_SubRefund_FullMethodName     = "/sdb.Sdb/SubRefund"
-	Sdb_GetRefund_FullMethodName     = "/sdb.Sdb/GetRefund"
+	Sdb_CreateAccount_FullMethodName     = "/sdb.Sdb/CreateAccount"
+	Sdb_SubBalance_FullMethodName        = "/sdb.Sdb/SubBalance"
+	Sdb_AddBalance_FullMethodName        = "/sdb.Sdb/AddBalance"
+	Sdb_GetBalance_FullMethodName        = "/sdb.Sdb/GetBalance"
+	Sdb_Suicide_FullMethodName           = "/sdb.Sdb/Suicide"
+	Sdb_HasSuicided_FullMethodName       = "/sdb.Sdb/HasSuicided"
+	Sdb_GetNonce_FullMethodName          = "/sdb.Sdb/GetNonce"
+	Sdb_SetNonce_FullMethodName          = "/sdb.Sdb/SetNonce"
+	Sdb_GetCodeHash_FullMethodName       = "/sdb.Sdb/GetCodeHash"
+	Sdb_GetCode_FullMethodName           = "/sdb.Sdb/GetCode"
+	Sdb_SetCode_FullMethodName           = "/sdb.Sdb/SetCode"
+	Sdb_GetCodeSize_FullMethodName       = "/sdb.Sdb/GetCodeSize"
+	Sdb_AddRefund_FullMethodName         = "/sdb.Sdb/AddRefund"
+	Sdb_SubRefund_FullMethodName         = "/sdb.Sdb/SubRefund"
+	Sdb_GetRefund_FullMethodName         = "/sdb.Sdb/GetRefund"
+	Sdb_GetTransientState_FullMethodName = "/sdb.Sdb/GetTransientState"
+	Sdb_SetTransientState_FullMethodName = "/sdb.Sdb/SetTransientState"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -44,6 +47,7 @@ type SdbClient interface {
 	AddBalance(ctx context.Context, in *AddBalanceRequest, opts ...grpc.CallOption) (*AddBalanceResponse, error)
 	GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 	Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
+	HasSuicided(ctx context.Context, in *HasSuicidedRequest, opts ...grpc.CallOption) (*HasSuicidedResponse, error)
 	GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error)
 	SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error)
 	GetCodeHash(ctx context.Context, in *GetCodeHashRequest, opts ...grpc.CallOption) (*GetCodeHashResponse, error)
@@ -53,6 +57,8 @@ type SdbClient interface {
 	AddRefund(ctx context.Context, in *AddRefundRequest, opts ...grpc.CallOption) (*AddRefundResponse, error)
 	SubRefund(ctx context.Context, in *SubRefundRequest, opts ...grpc.CallOption) (*SubRefundResponse, error)
 	GetRefund(ctx context.Context, in *GetRefundRequest, opts ...grpc.CallOption) (*GetRefundResponse, error)
+	GetTransientState(ctx context.Context, in *GetTransientStateRequest, opts ...grpc.CallOption) (*GetTransientStateResponse, error)
+	SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error)
 }
 
 type sdbClient struct {
@@ -102,6 +108,15 @@ func (c *sdbClient) GetBalance(ctx context.Context, in *GetBalanceRequest, opts 
 func (c *sdbClient) Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error) {
 	out := new(SuicideResponse)
 	err := c.cc.Invoke(ctx, Sdb_Suicide_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) HasSuicided(ctx context.Context, in *HasSuicidedRequest, opts ...grpc.CallOption) (*HasSuicidedResponse, error) {
+	out := new(HasSuicidedResponse)
+	err := c.cc.Invoke(ctx, Sdb_HasSuicided_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -189,6 +204,24 @@ func (c *sdbClient) GetRefund(ctx context.Context, in *GetRefundRequest, opts ..
 	return out, nil
 }
 
+func (c *sdbClient) GetTransientState(ctx context.Context, in *GetTransientStateRequest, opts ...grpc.CallOption) (*GetTransientStateResponse, error) {
+	out := new(GetTransientStateResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetTransientState_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error) {
+	out := new(SetTransientStateResponse)
+	err := c.cc.Invoke(ctx, Sdb_SetTransientState_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -198,6 +231,7 @@ type SdbServer interface {
 	AddBalance(context.Context, *AddBalanceRequest) (*AddBalanceResponse, error)
 	GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error)
 	Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error)
+	HasSuicided(context.Context, *HasSuicidedRequest) (*HasSuicidedResponse, error)
 	GetNonce(context.Context, *GetNonceRequest) (*GetNonceResponse, error)
 	SetNonce(context.Context, *SetNonceRequest) (*SetNonceResponse, error)
 	GetCodeHash(context.Context, *GetCodeHashRequest) (*GetCodeHashResponse, error)
@@ -207,6 +241,8 @@ type SdbServer interface {
 	AddRefund(context.Context, *AddRefundRequest) (*AddRefundResponse, error)
 	SubRefund(context.Context, *SubRefundRequest) (*SubRefundResponse, error)
 	GetRefund(context.Context, *GetRefundRequest) (*GetRefundResponse, error)
+	GetTransientState(context.Context, *GetTransientStateRequest) (*GetTransientStateResponse, error)
+	SetTransientState(context.Context, *SetTransientStateRequest) (*SetTransientStateResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -228,6 +264,9 @@ func (UnimplementedSdbServer) GetBalance(context.Context, *GetBalanceRequest) (*
 }
 func (UnimplementedSdbServer) Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Suicide not implemented")
+}
+func (UnimplementedSdbServer) HasSuicided(context.Context, *HasSuicidedRequest) (*HasSuicidedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HasSuicided not implemented")
 }
 func (UnimplementedSdbServer) GetNonce(context.Context, *GetNonceRequest) (*GetNonceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetNonce not implemented")
@@ -255,6 +294,12 @@ func (UnimplementedSdbServer) SubRefund(context.Context, *SubRefundRequest) (*Su
 }
 func (UnimplementedSdbServer) GetRefund(context.Context, *GetRefundRequest) (*GetRefundResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRefund not implemented")
+}
+func (UnimplementedSdbServer) GetTransientState(context.Context, *GetTransientStateRequest) (*GetTransientStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransientState not implemented")
+}
+func (UnimplementedSdbServer) SetTransientState(context.Context, *SetTransientStateRequest) (*SetTransientStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTransientState not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -355,6 +400,24 @@ func _Sdb_Suicide_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(SdbServer).Suicide(ctx, req.(*SuicideRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_HasSuicided_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HasSuicidedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).HasSuicided(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_HasSuicided_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).HasSuicided(ctx, req.(*HasSuicidedRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -521,6 +584,42 @@ func _Sdb_GetRefund_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_GetTransientState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransientStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetTransientState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetTransientState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetTransientState(ctx, req.(*GetTransientStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SetTransientState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTransientStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SetTransientState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SetTransientState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SetTransientState(ctx, req.(*SetTransientStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -547,6 +646,10 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Suicide",
 			Handler:    _Sdb_Suicide_Handler,
+		},
+		{
+			MethodName: "HasSuicided",
+			Handler:    _Sdb_HasSuicided_Handler,
 		},
 		{
 			MethodName: "GetNonce",
@@ -583,6 +686,14 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRefund",
 			Handler:    _Sdb_GetRefund_Handler,
+		},
+		{
+			MethodName: "GetTransientState",
+			Handler:    _Sdb_GetTransientState_Handler,
+		},
+		{
+			MethodName: "SetTransientState",
+			Handler:    _Sdb_SetTransientState_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
