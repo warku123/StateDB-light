@@ -45,10 +45,56 @@ type (
 
 	SetNonceRequest {
 		Addr   string `json:"address"`
-		Amount uint64   `json:"amount"`
+		Amount uint64 `json:"amount"`
 	}
 	SetNonceResponse {
 		Empty bool `json:"empty"`
+	}
+
+	GetCodeHashRequest {
+		Addr string `json:"address"`
+	}
+	GetCodeHashResponse {
+		Hash string `json:"hash"`
+	}
+
+	GetCodeRequest {
+		Addr string `json:"address"`
+	}
+	GetCodeResponse {
+		Code string `json:"code"`
+	}
+
+	SetCodeRequest {
+		Addr string `json:"address"`
+		Code string `json:"code"`
+	}
+	SetCodeResponse {
+	}
+
+	GetCodeSizeRequest {
+		Addr string `json:"address"`
+	}
+	GetCodeSizeResponse {
+		Size int32 `json:"size"`
+	}
+
+	AddRefundRequest {
+		Amount uint64 `json:"amount"`
+	}
+	AddRefundResponse {
+	}
+
+	SubRefundRequest {
+		Amount uint64 `json:"amount"`
+	}
+	SubRefundResponse {
+	}
+
+	GetRefundRequest {
+	}
+	GetRefundResponse {
+		Amount uint64 `json:"amount"`
 	}
 )
 
@@ -73,4 +119,25 @@ service Sdb {
 	
 	@handler SetNonce
 	post /api/sdb/setnonce(SetNonceRequest) returns(SetNonceResponse)
+	
+	@handler GetCodeHash
+	post /api/sdb/getcodehash(GetCodeHashRequest) returns(GetCodeHashResponse)
+	
+	@handler GetCode
+	post /api/sdb/getcode(GetCodeRequest) returns(GetCodeResponse)
+	
+	@handler SetCode
+	post /api/sdb/setcode(SetCodeRequest) returns(SetCodeResponse)
+	
+	@handler GetCodeSize
+	post /api/sdb/getcodesize(GetCodeSizeRequest) returns(GetCodeSizeResponse)
+	
+	@handler AddRefund
+	post /api/sdb/addrefund(AddRefundRequest) returns(AddRefundResponse)
+	
+	@handler SubRefund
+	post /api/sdb/subrefund(SubRefundRequest) returns(SubRefundResponse)
+	
+	@handler GetRefund
+	post /api/sdb/getrefund(GetRefundRequest) returns(GetRefundResponse)
 }

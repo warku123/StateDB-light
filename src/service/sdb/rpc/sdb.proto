@@ -56,12 +56,71 @@ message SetNonceResponse {
     bool Empty = 1;
 }
 
+message GetCodeHashRequest {
+    string Addr = 1;
+}
+message GetCodeHashResponse {
+    string Hash = 1;
+}
+
+message GetCodeRequest {
+    string Addr = 1;
+}
+message GetCodeResponse {
+    string Code = 1;
+}
+
+message SetCodeRequest {
+    string Addr = 1;
+    string Code = 2;
+}
+message SetCodeResponse {
+
+}
+
+message GetCodeSizeRequest {
+    string Addr = 1;
+}
+message GetCodeSizeResponse {
+    int32 Size = 1;
+}
+
+message AddRefundRequest {
+    uint64 Amount = 1;
+}
+message AddRefundResponse {
+}
+
+message SubRefundRequest {
+    uint64 Amount = 1;
+}
+message SubRefundResponse {
+}
+
+message GetRefundRequest {
+}
+message GetRefundResponse {
+    uint64 Amount = 1;
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
+
     rpc SubBalance(SubBalanceRequest) returns(SubBalanceResponse);
     rpc AddBalance(AddBalanceRequest) returns(AddBalanceResponse);
     rpc GetBalance(GetBalanceRequest) returns(GetBalanceResponse);
+
     rpc Suicide(SuicideRequest) returns(SuicideResponse);
+
     rpc GetNonce(GetNonceRequest) returns(GetNonceResponse);
     rpc SetNonce(SetNonceRequest) returns(SetNonceResponse);
+
+    rpc GetCodeHash(GetCodeHashRequest) returns(GetCodeHashResponse);
+    rpc GetCode(GetCodeRequest) returns(GetCodeResponse);
+    rpc SetCode(SetCodeRequest) returns(SetCodeResponse);
+    rpc GetCodeSize(GetCodeSizeRequest) returns(GetCodeSizeResponse);
+
+    rpc AddRefund(AddRefundRequest) returns(AddRefundResponse);
+    rpc SubRefund(SubRefundRequest) returns(SubRefundResponse);
+    rpc GetRefund(GetRefundRequest) returns(GetRefundResponse);
 }

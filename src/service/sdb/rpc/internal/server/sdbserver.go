@@ -56,3 +56,38 @@ func (s *SdbServer) SetNonce(ctx context.Context, in *sdb.SetNonceRequest) (*sdb
 	l := logic.NewSetNonceLogic(ctx, s.svcCtx)
 	return l.SetNonce(in)
 }
+
+func (s *SdbServer) GetCodeHash(ctx context.Context, in *sdb.GetCodeHashRequest) (*sdb.GetCodeHashResponse, error) {
+	l := logic.NewGetCodeHashLogic(ctx, s.svcCtx)
+	return l.GetCodeHash(in)
+}
+
+func (s *SdbServer) GetCode(ctx context.Context, in *sdb.GetCodeRequest) (*sdb.GetCodeResponse, error) {
+	l := logic.NewGetCodeLogic(ctx, s.svcCtx)
+	return l.GetCode(in)
+}
+
+func (s *SdbServer) SetCode(ctx context.Context, in *sdb.SetCodeRequest) (*sdb.SetCodeResponse, error) {
+	l := logic.NewSetCodeLogic(ctx, s.svcCtx)
+	return l.SetCode(in)
+}
+
+func (s *SdbServer) GetCodeSize(ctx context.Context, in *sdb.GetCodeSizeRequest) (*sdb.GetCodeSizeResponse, error) {
+	l := logic.NewGetCodeSizeLogic(ctx, s.svcCtx)
+	return l.GetCodeSize(in)
+}
+
+func (s *SdbServer) AddRefund(ctx context.Context, in *sdb.AddRefundRequest) (*sdb.AddRefundResponse, error) {
+	l := logic.NewAddRefundLogic(ctx, s.svcCtx)
+	return l.AddRefund(in)
+}
+
+func (s *SdbServer) SubRefund(ctx context.Context, in *sdb.SubRefundRequest) (*sdb.SubRefundResponse, error) {
+	l := logic.NewSubRefundLogic(ctx, s.svcCtx)
+	return l.SubRefund(in)
+}
+
+func (s *SdbServer) GetRefund(ctx context.Context, in *sdb.GetRefundRequest) (*sdb.GetRefundResponse, error) {
+	l := logic.NewGetRefundLogic(ctx, s.svcCtx)
+	return l.GetRefund(in)
+}

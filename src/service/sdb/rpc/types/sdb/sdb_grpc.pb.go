@@ -26,6 +26,13 @@ const (
 	Sdb_Suicide_FullMethodName       = "/sdb.Sdb/Suicide"
 	Sdb_GetNonce_FullMethodName      = "/sdb.Sdb/GetNonce"
 	Sdb_SetNonce_FullMethodName      = "/sdb.Sdb/SetNonce"
+	Sdb_GetCodeHash_FullMethodName   = "/sdb.Sdb/GetCodeHash"
+	Sdb_GetCode_FullMethodName       = "/sdb.Sdb/GetCode"
+	Sdb_SetCode_FullMethodName       = "/sdb.Sdb/SetCode"
+	Sdb_GetCodeSize_FullMethodName   = "/sdb.Sdb/GetCodeSize"
+	Sdb_AddRefund_FullMethodName     = "/sdb.Sdb/AddRefund"
+	Sdb_SubRefund_FullMethodName     = "/sdb.Sdb/SubRefund"
+	Sdb_GetRefund_FullMethodName     = "/sdb.Sdb/GetRefund"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -39,6 +46,13 @@ type SdbClient interface {
 	Suicide(ctx context.Context, in *SuicideRequest, opts ...grpc.CallOption) (*SuicideResponse, error)
 	GetNonce(ctx context.Context, in *GetNonceRequest, opts ...grpc.CallOption) (*GetNonceResponse, error)
 	SetNonce(ctx context.Context, in *SetNonceRequest, opts ...grpc.CallOption) (*SetNonceResponse, error)
+	GetCodeHash(ctx context.Context, in *GetCodeHashRequest, opts ...grpc.CallOption) (*GetCodeHashResponse, error)
+	GetCode(ctx context.Context, in *GetCodeRequest, opts ...grpc.CallOption) (*GetCodeResponse, error)
+	SetCode(ctx context.Context, in *SetCodeRequest, opts ...grpc.CallOption) (*SetCodeResponse, error)
+	GetCodeSize(ctx context.Context, in *GetCodeSizeRequest, opts ...grpc.CallOption) (*GetCodeSizeResponse, error)
+	AddRefund(ctx context.Context, in *AddRefundRequest, opts ...grpc.CallOption) (*AddRefundResponse, error)
+	SubRefund(ctx context.Context, in *SubRefundRequest, opts ...grpc.CallOption) (*SubRefundResponse, error)
+	GetRefund(ctx context.Context, in *GetRefundRequest, opts ...grpc.CallOption) (*GetRefundResponse, error)
 }
 
 type sdbClient struct {
@@ -112,6 +126,69 @@ func (c *sdbClient) SetNonce(ctx context.Context, in *SetNonceRequest, opts ...g
 	return out, nil
 }
 
+func (c *sdbClient) GetCodeHash(ctx context.Context, in *GetCodeHashRequest, opts ...grpc.CallOption) (*GetCodeHashResponse, error) {
+	out := new(GetCodeHashResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetCodeHash_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) GetCode(ctx context.Context, in *GetCodeRequest, opts ...grpc.CallOption) (*GetCodeResponse, error) {
+	out := new(GetCodeResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetCode_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SetCode(ctx context.Context, in *SetCodeRequest, opts ...grpc.CallOption) (*SetCodeResponse, error) {
+	out := new(SetCodeResponse)
+	err := c.cc.Invoke(ctx, Sdb_SetCode_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) GetCodeSize(ctx context.Context, in *GetCodeSizeRequest, opts ...grpc.CallOption) (*GetCodeSizeResponse, error) {
+	out := new(GetCodeSizeResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetCodeSize_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) AddRefund(ctx context.Context, in *AddRefundRequest, opts ...grpc.CallOption) (*AddRefundResponse, error) {
+	out := new(AddRefundResponse)
+	err := c.cc.Invoke(ctx, Sdb_AddRefund_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SubRefund(ctx context.Context, in *SubRefundRequest, opts ...grpc.CallOption) (*SubRefundResponse, error) {
+	out := new(SubRefundResponse)
+	err := c.cc.Invoke(ctx, Sdb_SubRefund_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) GetRefund(ctx context.Context, in *GetRefundRequest, opts ...grpc.CallOption) (*GetRefundResponse, error) {
+	out := new(GetRefundResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetRefund_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -123,6 +200,13 @@ type SdbServer interface {
 	Suicide(context.Context, *SuicideRequest) (*SuicideResponse, error)
 	GetNonce(context.Context, *GetNonceRequest) (*GetNonceResponse, error)
 	SetNonce(context.Context, *SetNonceRequest) (*SetNonceResponse, error)
+	GetCodeHash(context.Context, *GetCodeHashRequest) (*GetCodeHashResponse, error)
+	GetCode(context.Context, *GetCodeRequest) (*GetCodeResponse, error)
+	SetCode(context.Context, *SetCodeRequest) (*SetCodeResponse, error)
+	GetCodeSize(context.Context, *GetCodeSizeRequest) (*GetCodeSizeResponse, error)
+	AddRefund(context.Context, *AddRefundRequest) (*AddRefundResponse, error)
+	SubRefund(context.Context, *SubRefundRequest) (*SubRefundResponse, error)
+	GetRefund(context.Context, *GetRefundRequest) (*GetRefundResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -150,6 +234,27 @@ func (UnimplementedSdbServer) GetNonce(context.Context, *GetNonceRequest) (*GetN
 }
 func (UnimplementedSdbServer) SetNonce(context.Context, *SetNonceRequest) (*SetNonceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetNonce not implemented")
+}
+func (UnimplementedSdbServer) GetCodeHash(context.Context, *GetCodeHashRequest) (*GetCodeHashResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCodeHash not implemented")
+}
+func (UnimplementedSdbServer) GetCode(context.Context, *GetCodeRequest) (*GetCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCode not implemented")
+}
+func (UnimplementedSdbServer) SetCode(context.Context, *SetCodeRequest) (*SetCodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetCode not implemented")
+}
+func (UnimplementedSdbServer) GetCodeSize(context.Context, *GetCodeSizeRequest) (*GetCodeSizeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCodeSize not implemented")
+}
+func (UnimplementedSdbServer) AddRefund(context.Context, *AddRefundRequest) (*AddRefundResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddRefund not implemented")
+}
+func (UnimplementedSdbServer) SubRefund(context.Context, *SubRefundRequest) (*SubRefundResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubRefund not implemented")
+}
+func (UnimplementedSdbServer) GetRefund(context.Context, *GetRefundRequest) (*GetRefundResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRefund not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -290,6 +395,132 @@ func _Sdb_SetNonce_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_GetCodeHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCodeHashRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetCodeHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetCodeHash_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetCodeHash(ctx, req.(*GetCodeHashRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_GetCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetCode(ctx, req.(*GetCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SetCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetCodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SetCode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SetCode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SetCode(ctx, req.(*SetCodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_GetCodeSize_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCodeSizeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetCodeSize(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetCodeSize_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetCodeSize(ctx, req.(*GetCodeSizeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_AddRefund_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddRefundRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).AddRefund(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_AddRefund_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).AddRefund(ctx, req.(*AddRefundRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SubRefund_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubRefundRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SubRefund(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SubRefund_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SubRefund(ctx, req.(*SubRefundRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_GetRefund_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRefundRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetRefund(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetRefund_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetRefund(ctx, req.(*GetRefundRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -324,6 +555,34 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetNonce",
 			Handler:    _Sdb_SetNonce_Handler,
+		},
+		{
+			MethodName: "GetCodeHash",
+			Handler:    _Sdb_GetCodeHash_Handler,
+		},
+		{
+			MethodName: "GetCode",
+			Handler:    _Sdb_GetCode_Handler,
+		},
+		{
+			MethodName: "SetCode",
+			Handler:    _Sdb_SetCode_Handler,
+		},
+		{
+			MethodName: "GetCodeSize",
+			Handler:    _Sdb_GetCodeSize_Handler,
+		},
+		{
+			MethodName: "AddRefund",
+			Handler:    _Sdb_AddRefund_Handler,
+		},
+		{
+			MethodName: "SubRefund",
+			Handler:    _Sdb_SubRefund_Handler,
+		},
+		{
+			MethodName: "GetRefund",
+			Handler:    _Sdb_GetRefund_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

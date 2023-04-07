@@ -47,6 +47,41 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/sdb/setnonce",
 				Handler: SetNonceHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/getcodehash",
+				Handler: GetCodeHashHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/getcode",
+				Handler: GetCodeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/setcode",
+				Handler: SetCodeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/getcodesize",
+				Handler: GetCodeSizeHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addrefund",
+				Handler: AddRefundHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/subrefund",
+				Handler: SubRefundHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/getrefund",
+				Handler: GetRefundHandler(serverCtx),
+			},
 		},
 	)
 }
