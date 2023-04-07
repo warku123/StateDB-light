@@ -1629,6 +1629,194 @@ func (*SetTransientStateResponse) Descriptor() ([]byte, []int) {
 	return file_rpc_sdb_proto_rawDescGZIP(), []int{33}
 }
 
+type ExistRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Addr string `protobuf:"bytes,1,opt,name=Addr,proto3" json:"Addr,omitempty"`
+}
+
+func (x *ExistRequest) Reset() {
+	*x = ExistRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[34]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ExistRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExistRequest) ProtoMessage() {}
+
+func (x *ExistRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[34]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExistRequest.ProtoReflect.Descriptor instead.
+func (*ExistRequest) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *ExistRequest) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+type ExistResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Is_Exist bool `protobuf:"varint,1,opt,name=Is_Exist,json=IsExist,proto3" json:"Is_Exist,omitempty"`
+}
+
+func (x *ExistResponse) Reset() {
+	*x = ExistResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[35]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ExistResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExistResponse) ProtoMessage() {}
+
+func (x *ExistResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[35]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExistResponse.ProtoReflect.Descriptor instead.
+func (*ExistResponse) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *ExistResponse) GetIs_Exist() bool {
+	if x != nil {
+		return x.Is_Exist
+	}
+	return false
+}
+
+type EmptyRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Addr string `protobuf:"bytes,1,opt,name=Addr,proto3" json:"Addr,omitempty"`
+}
+
+func (x *EmptyRequest) Reset() {
+	*x = EmptyRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[36]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmptyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmptyRequest) ProtoMessage() {}
+
+func (x *EmptyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[36]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmptyRequest.ProtoReflect.Descriptor instead.
+func (*EmptyRequest) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *EmptyRequest) GetAddr() string {
+	if x != nil {
+		return x.Addr
+	}
+	return ""
+}
+
+type EmptyResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Is_Empty bool `protobuf:"varint,1,opt,name=Is_Empty,json=IsEmpty,proto3" json:"Is_Empty,omitempty"`
+}
+
+func (x *EmptyResponse) Reset() {
+	*x = EmptyResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_rpc_sdb_proto_msgTypes[37]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EmptyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EmptyResponse) ProtoMessage() {}
+
+func (x *EmptyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rpc_sdb_proto_msgTypes[37]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EmptyResponse.ProtoReflect.Descriptor instead.
+func (*EmptyResponse) Descriptor() ([]byte, []int) {
+	return file_rpc_sdb_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *EmptyResponse) GetIs_Empty() bool {
+	if x != nil {
+		return x.Is_Empty
+	}
+	return false
+}
+
 var File_rpc_sdb_proto protoreflect.FileDescriptor
 
 var file_rpc_sdb_proto_rawDesc = []byte{
@@ -1728,7 +1916,17 @@ var file_rpc_sdb_proto_rawDesc = []byte{
 	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x05, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x22, 0x1b, 0x0a, 0x19, 0x53, 0x65, 0x74, 0x54,
 	0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xc0, 0x08, 0x0a, 0x03, 0x53, 0x64, 0x62, 0x12, 0x46, 0x0a,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x22, 0x0a, 0x0c, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41, 0x64, 0x64, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x22, 0x2a, 0x0a, 0x0d, 0x45, 0x78, 0x69,
+	0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x49, 0x73,
+	0x5f, 0x45, 0x78, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x49, 0x73,
+	0x45, 0x78, 0x69, 0x73, 0x74, 0x22, 0x22, 0x0a, 0x0c, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x41, 0x64, 0x64, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x41, 0x64, 0x64, 0x72, 0x22, 0x2a, 0x0a, 0x0d, 0x45, 0x6d, 0x70,
+	0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x49, 0x73,
+	0x5f, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x49, 0x73,
+	0x45, 0x6d, 0x70, 0x74, 0x79, 0x32, 0xa0, 0x09, 0x0a, 0x03, 0x53, 0x64, 0x62, 0x12, 0x46, 0x0a,
 	0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x19,
 	0x2e, 0x73, 0x64, 0x62, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x41, 0x63, 0x63, 0x6f, 0x75,
 	0x6e, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x73, 0x64, 0x62, 0x2e,
@@ -1796,6 +1994,12 @@ var file_rpc_sdb_proto_rawDesc = []byte{
 	0x53, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74,
 	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x53,
 	0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x69, 0x65, 0x6e, 0x74, 0x53, 0x74, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2e, 0x0a, 0x05, 0x45, 0x78, 0x69, 0x73,
+	0x74, 0x12, 0x11, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x45, 0x78, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x45, 0x78, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2e, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x12, 0x11, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x73, 0x64, 0x62, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x07, 0x5a, 0x05, 0x2e, 0x2f, 0x73, 0x64,
 	0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -1812,7 +2016,7 @@ func file_rpc_sdb_proto_rawDescGZIP() []byte {
 	return file_rpc_sdb_proto_rawDescData
 }
 
-var file_rpc_sdb_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_rpc_sdb_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
 var file_rpc_sdb_proto_goTypes = []interface{}{
 	(*CreateAccountRequest)(nil),      // 0: sdb.CreateAccountRequest
 	(*CreateAccountResponse)(nil),     // 1: sdb.CreateAccountResponse
@@ -1848,6 +2052,10 @@ var file_rpc_sdb_proto_goTypes = []interface{}{
 	(*GetTransientStateResponse)(nil), // 31: sdb.GetTransientStateResponse
 	(*SetTransientStateRequest)(nil),  // 32: sdb.SetTransientStateRequest
 	(*SetTransientStateResponse)(nil), // 33: sdb.SetTransientStateResponse
+	(*ExistRequest)(nil),              // 34: sdb.ExistRequest
+	(*ExistResponse)(nil),             // 35: sdb.ExistResponse
+	(*EmptyRequest)(nil),              // 36: sdb.EmptyRequest
+	(*EmptyResponse)(nil),             // 37: sdb.EmptyResponse
 }
 var file_rpc_sdb_proto_depIdxs = []int32{
 	0,  // 0: sdb.Sdb.CreateAccount:input_type -> sdb.CreateAccountRequest
@@ -1867,25 +2075,29 @@ var file_rpc_sdb_proto_depIdxs = []int32{
 	28, // 14: sdb.Sdb.GetRefund:input_type -> sdb.GetRefundRequest
 	30, // 15: sdb.Sdb.GetTransientState:input_type -> sdb.GetTransientStateRequest
 	32, // 16: sdb.Sdb.SetTransientState:input_type -> sdb.SetTransientStateRequest
-	1,  // 17: sdb.Sdb.CreateAccount:output_type -> sdb.CreateAccountResponse
-	3,  // 18: sdb.Sdb.SubBalance:output_type -> sdb.SubBalanceResponse
-	5,  // 19: sdb.Sdb.AddBalance:output_type -> sdb.AddBalanceResponse
-	7,  // 20: sdb.Sdb.GetBalance:output_type -> sdb.GetBalanceResponse
-	9,  // 21: sdb.Sdb.Suicide:output_type -> sdb.SuicideResponse
-	11, // 22: sdb.Sdb.HasSuicided:output_type -> sdb.HasSuicidedResponse
-	13, // 23: sdb.Sdb.GetNonce:output_type -> sdb.GetNonceResponse
-	15, // 24: sdb.Sdb.SetNonce:output_type -> sdb.SetNonceResponse
-	17, // 25: sdb.Sdb.GetCodeHash:output_type -> sdb.GetCodeHashResponse
-	19, // 26: sdb.Sdb.GetCode:output_type -> sdb.GetCodeResponse
-	21, // 27: sdb.Sdb.SetCode:output_type -> sdb.SetCodeResponse
-	23, // 28: sdb.Sdb.GetCodeSize:output_type -> sdb.GetCodeSizeResponse
-	25, // 29: sdb.Sdb.AddRefund:output_type -> sdb.AddRefundResponse
-	27, // 30: sdb.Sdb.SubRefund:output_type -> sdb.SubRefundResponse
-	29, // 31: sdb.Sdb.GetRefund:output_type -> sdb.GetRefundResponse
-	31, // 32: sdb.Sdb.GetTransientState:output_type -> sdb.GetTransientStateResponse
-	33, // 33: sdb.Sdb.SetTransientState:output_type -> sdb.SetTransientStateResponse
-	17, // [17:34] is the sub-list for method output_type
-	0,  // [0:17] is the sub-list for method input_type
+	34, // 17: sdb.Sdb.Exist:input_type -> sdb.ExistRequest
+	36, // 18: sdb.Sdb.Empty:input_type -> sdb.EmptyRequest
+	1,  // 19: sdb.Sdb.CreateAccount:output_type -> sdb.CreateAccountResponse
+	3,  // 20: sdb.Sdb.SubBalance:output_type -> sdb.SubBalanceResponse
+	5,  // 21: sdb.Sdb.AddBalance:output_type -> sdb.AddBalanceResponse
+	7,  // 22: sdb.Sdb.GetBalance:output_type -> sdb.GetBalanceResponse
+	9,  // 23: sdb.Sdb.Suicide:output_type -> sdb.SuicideResponse
+	11, // 24: sdb.Sdb.HasSuicided:output_type -> sdb.HasSuicidedResponse
+	13, // 25: sdb.Sdb.GetNonce:output_type -> sdb.GetNonceResponse
+	15, // 26: sdb.Sdb.SetNonce:output_type -> sdb.SetNonceResponse
+	17, // 27: sdb.Sdb.GetCodeHash:output_type -> sdb.GetCodeHashResponse
+	19, // 28: sdb.Sdb.GetCode:output_type -> sdb.GetCodeResponse
+	21, // 29: sdb.Sdb.SetCode:output_type -> sdb.SetCodeResponse
+	23, // 30: sdb.Sdb.GetCodeSize:output_type -> sdb.GetCodeSizeResponse
+	25, // 31: sdb.Sdb.AddRefund:output_type -> sdb.AddRefundResponse
+	27, // 32: sdb.Sdb.SubRefund:output_type -> sdb.SubRefundResponse
+	29, // 33: sdb.Sdb.GetRefund:output_type -> sdb.GetRefundResponse
+	31, // 34: sdb.Sdb.GetTransientState:output_type -> sdb.GetTransientStateResponse
+	33, // 35: sdb.Sdb.SetTransientState:output_type -> sdb.SetTransientStateResponse
+	35, // 36: sdb.Sdb.Exist:output_type -> sdb.ExistResponse
+	37, // 37: sdb.Sdb.Empty:output_type -> sdb.EmptyResponse
+	19, // [19:38] is the sub-list for method output_type
+	0,  // [0:19] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -2305,6 +2517,54 @@ func file_rpc_sdb_proto_init() {
 				return nil
 			}
 		}
+		file_rpc_sdb_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExistRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ExistResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EmptyRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_rpc_sdb_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EmptyResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -2312,7 +2572,7 @@ func file_rpc_sdb_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_rpc_sdb_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   34,
+			NumMessages:   38,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

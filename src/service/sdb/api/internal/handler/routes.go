@@ -97,6 +97,16 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/sdb/settransientstate",
 				Handler: SetTransientStateHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/exist",
+				Handler: ExistHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/empty",
+				Handler: EmptyHandler(serverCtx),
+			},
 		},
 	)
 }

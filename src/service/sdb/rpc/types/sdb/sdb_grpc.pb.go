@@ -36,6 +36,8 @@ const (
 	Sdb_GetRefund_FullMethodName         = "/sdb.Sdb/GetRefund"
 	Sdb_GetTransientState_FullMethodName = "/sdb.Sdb/GetTransientState"
 	Sdb_SetTransientState_FullMethodName = "/sdb.Sdb/SetTransientState"
+	Sdb_Exist_FullMethodName             = "/sdb.Sdb/Exist"
+	Sdb_Empty_FullMethodName             = "/sdb.Sdb/Empty"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -59,6 +61,8 @@ type SdbClient interface {
 	GetRefund(ctx context.Context, in *GetRefundRequest, opts ...grpc.CallOption) (*GetRefundResponse, error)
 	GetTransientState(ctx context.Context, in *GetTransientStateRequest, opts ...grpc.CallOption) (*GetTransientStateResponse, error)
 	SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error)
+	Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error)
+	Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
 }
 
 type sdbClient struct {
@@ -222,6 +226,24 @@ func (c *sdbClient) SetTransientState(ctx context.Context, in *SetTransientState
 	return out, nil
 }
 
+func (c *sdbClient) Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error) {
+	out := new(ExistResponse)
+	err := c.cc.Invoke(ctx, Sdb_Exist_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
+	out := new(EmptyResponse)
+	err := c.cc.Invoke(ctx, Sdb_Empty_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -243,6 +265,8 @@ type SdbServer interface {
 	GetRefund(context.Context, *GetRefundRequest) (*GetRefundResponse, error)
 	GetTransientState(context.Context, *GetTransientStateRequest) (*GetTransientStateResponse, error)
 	SetTransientState(context.Context, *SetTransientStateRequest) (*SetTransientStateResponse, error)
+	Exist(context.Context, *ExistRequest) (*ExistResponse, error)
+	Empty(context.Context, *EmptyRequest) (*EmptyResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -300,6 +324,12 @@ func (UnimplementedSdbServer) GetTransientState(context.Context, *GetTransientSt
 }
 func (UnimplementedSdbServer) SetTransientState(context.Context, *SetTransientStateRequest) (*SetTransientStateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetTransientState not implemented")
+}
+func (UnimplementedSdbServer) Exist(context.Context, *ExistRequest) (*ExistResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Exist not implemented")
+}
+func (UnimplementedSdbServer) Empty(context.Context, *EmptyRequest) (*EmptyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Empty not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -620,6 +650,42 @@ func _Sdb_SetTransientState_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_Exist_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExistRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).Exist(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_Exist_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).Exist(ctx, req.(*ExistRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_Empty_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EmptyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).Empty(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_Empty_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).Empty(ctx, req.(*EmptyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -694,6 +760,14 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetTransientState",
 			Handler:    _Sdb_SetTransientState_Handler,
+		},
+		{
+			MethodName: "Exist",
+			Handler:    _Sdb_Exist_Handler,
+		},
+		{
+			MethodName: "Empty",
+			Handler:    _Sdb_Empty_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -106,3 +106,13 @@ func (s *SdbServer) SetTransientState(ctx context.Context, in *sdb.SetTransientS
 	l := logic.NewSetTransientStateLogic(ctx, s.svcCtx)
 	return l.SetTransientState(in)
 }
+
+func (s *SdbServer) Exist(ctx context.Context, in *sdb.ExistRequest) (*sdb.ExistResponse, error) {
+	l := logic.NewExistLogic(ctx, s.svcCtx)
+	return l.Exist(in)
+}
+
+func (s *SdbServer) Empty(ctx context.Context, in *sdb.EmptyRequest) (*sdb.EmptyResponse, error) {
+	l := logic.NewEmptyLogic(ctx, s.svcCtx)
+	return l.Empty(in)
+}

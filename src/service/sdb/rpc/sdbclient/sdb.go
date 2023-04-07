@@ -19,6 +19,10 @@ type (
 	AddRefundResponse         = sdb.AddRefundResponse
 	CreateAccountRequest      = sdb.CreateAccountRequest
 	CreateAccountResponse     = sdb.CreateAccountResponse
+	EmptyRequest              = sdb.EmptyRequest
+	EmptyResponse             = sdb.EmptyResponse
+	ExistRequest              = sdb.ExistRequest
+	ExistResponse             = sdb.ExistResponse
 	GetBalanceRequest         = sdb.GetBalanceRequest
 	GetBalanceResponse        = sdb.GetBalanceResponse
 	GetCodeHashRequest        = sdb.GetCodeHashRequest
@@ -66,6 +70,8 @@ type (
 		GetRefund(ctx context.Context, in *GetRefundRequest, opts ...grpc.CallOption) (*GetRefundResponse, error)
 		GetTransientState(ctx context.Context, in *GetTransientStateRequest, opts ...grpc.CallOption) (*GetTransientStateResponse, error)
 		SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error)
+		Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error)
+		Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
 	}
 
 	defaultSdb struct {
@@ -162,4 +168,14 @@ func (m *defaultSdb) GetTransientState(ctx context.Context, in *GetTransientStat
 func (m *defaultSdb) SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.SetTransientState(ctx, in, opts...)
+}
+
+func (m *defaultSdb) Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.Exist(ctx, in, opts...)
+}
+
+func (m *defaultSdb) Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.Empty(ctx, in, opts...)
 }

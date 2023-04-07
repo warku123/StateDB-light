@@ -119,6 +119,20 @@ type (
 	}
 	SetTransientStateResponse {
 	}
+
+	EmptyRequest {
+		Addr string `json:"address"`
+	}
+	EmptyResponse {
+		Is_empty bool `json:"is_empty"`
+	}
+
+	ExistRequest {
+		Addr string `json:"address"`
+	}
+	ExistResponse {
+		Is_exist bool `json:"is_exist"`
+	}
 )
 
 service Sdb {
@@ -172,4 +186,10 @@ service Sdb {
 	
 	@handler SetTransientState
 	post /api/sdb/settransientstate(SetTransientStateRequest) returns(SetTransientStateResponse)
+	
+	@handler Exist
+	post /api/sdb/exist(ExistRequest) returns(ExistResponse)
+	
+	@handler Empty
+	post /api/sdb/empty(EmptyRequest) returns(EmptyResponse)
 }

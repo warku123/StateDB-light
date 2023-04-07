@@ -127,6 +127,20 @@ message SetTransientStateRequest {
 message SetTransientStateResponse {
 }
 
+message ExistRequest {
+    string Addr = 1;
+}
+message ExistResponse {
+    bool Is_Exist = 1;
+}
+
+message EmptyRequest {
+    string Addr = 1;
+}
+message EmptyResponse {
+    bool Is_Empty = 1;
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -151,4 +165,7 @@ service Sdb {
 
     rpc GetTransientState(GetTransientStateRequest) returns(GetTransientStateResponse);
     rpc SetTransientState(SetTransientStateRequest) returns(SetTransientStateResponse);
+
+    rpc Exist(ExistRequest) returns(ExistResponse);
+    rpc Empty(EmptyRequest) returns(EmptyResponse);
 }

@@ -138,3 +138,19 @@ type SetTransientStateRequest struct {
 
 type SetTransientStateResponse struct {
 }
+
+type EmptyRequest struct {
+	Addr string `json:"address"`
+}
+
+type EmptyResponse struct {
+	Is_empty bool `json:"is_empty"`
+}
+
+type ExistRequest struct {
+	Addr string `json:"address"`
+}
+
+type ExistResponse struct {
+	Is_exist bool `json:"is_exist"`
+}
