@@ -7,6 +7,5 @@ import (
 
 type Config struct {
 	rest.RestConf
-
 	SdbRpc zrpc.RpcClientConf
 }
