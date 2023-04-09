@@ -154,3 +154,58 @@ type ExistRequest struct {
 type ExistResponse struct {
 	Is_exist bool `json:"is_exist"`
 }
+
+type AddressInAccessListRequest struct {
+	Addr string `json:"address"`
+}
+
+type AddressInAccessListResponse struct {
+	Is_in bool `json:"is_in"`
+}
+
+type SlotInAccessListRequest struct {
+	Addr string `json:"address"`
+	Hash string `json:"hash"`
+}
+
+type SlotInAccessListResponse struct {
+	Addr_ok bool `json:"addr_ok"`
+	Slot_ok bool `json:"slot_ok"`
+}
+
+type AddAddressToAccessListRequest struct {
+	Addr string `json:"address"`
+}
+
+type AddAddressToAccessListResponse struct {
+}
+
+type AddSlotToAccessListRequest struct {
+	Addr string `json:"address"`
+	Slot string `json:"slot"`
+}
+
+type AddSlotToAccessListResponse struct {
+}
+
+type RevertToSnapshotRequest struct {
+	Revid int32 `json:"revid"`
+}
+
+type RevertToSnapshotResponse struct {
+}
+
+type SnapshotRequest struct {
+}
+
+type SnapshotResponse struct {
+	Revid int32 `json:"revid"`
+}
+
+type AddPreimageRequest struct {
+	Hash     string `json:"hash"`
+	Preimage string `json:"preimage"`
+}
+
+type AddPreimageResponse struct {
+}

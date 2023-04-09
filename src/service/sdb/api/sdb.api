@@ -133,6 +133,54 @@ type (
 	ExistResponse {
 		Is_exist bool `json:"is_exist"`
 	}
+
+	AddressInAccessListRequest {
+		Addr string `json:"address"`
+	}
+	AddressInAccessListResponse {
+		Is_in bool `json:"is_in"`
+	}
+
+	SlotInAccessListRequest {
+		Addr string `json:"address"`
+		Hash string `json:"hash"`
+	}
+	SlotInAccessListResponse {
+		Addr_ok bool `json:"addr_ok"`
+		Slot_ok bool `json:"slot_ok"`
+	}
+
+	AddAddressToAccessListRequest {
+		Addr string `json:"address"`
+	}
+	AddAddressToAccessListResponse {
+	}
+
+	AddSlotToAccessListRequest {
+		Addr string `json:"address"`
+		Slot string `json:"slot"`
+	}
+	AddSlotToAccessListResponse {
+	}
+
+	RevertToSnapshotRequest {
+		Revid int32 `json:"revid"`
+	}
+	RevertToSnapshotResponse {
+	}
+
+	SnapshotRequest {
+	}
+	SnapshotResponse {
+		Revid int32 `json:"revid"`
+	}
+
+	AddPreimageRequest {
+		Hash     string `json:"hash"`
+		Preimage string `json:"preimage"`
+	}
+	AddPreimageResponse {
+	}
 )
 
 service Sdb {
@@ -192,4 +240,25 @@ service Sdb {
 	
 	@handler Empty
 	post /api/sdb/empty(EmptyRequest) returns(EmptyResponse)
+	
+	@handler AddressInAccessList
+	post /api/sdb/addressinaccesslist(AddressInAccessListRequest) returns(AddressInAccessListResponse)
+	
+	@handler SlotInAccessList
+	post /api/sdb/slotinaccesslist(SlotInAccessListRequest) returns(SlotInAccessListResponse)
+	
+	@handler AddAddressToAccessList
+	post /api/sdb/addaddresstoaccesslist(AddAddressToAccessListRequest) returns(AddAddressToAccessListResponse)
+	
+	@handler AddSlotToAccessList
+	post /api/sdb/addslottoaccesslist(AddSlotToAccessListRequest) returns(AddSlotToAccessListResponse)
+	
+	@handler RevertToSnapshot
+	post /api/sdb/reverttosnapshot(RevertToSnapshotRequest) returns(RevertToSnapshotResponse)
+	
+	@handler Snapshot
+	post /api/sdb/snapshot(SnapshotRequest) returns(SnapshotResponse)
+	
+	@handler AddPreimage
+	post /api/sdb/addpreimage(AddPreimageRequest) returns(AddPreimageResponse)
 }

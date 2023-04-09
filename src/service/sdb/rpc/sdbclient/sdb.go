@@ -13,44 +13,58 @@ import (
 )
 
 type (
-	AddBalanceRequest         = sdb.AddBalanceRequest
-	AddBalanceResponse        = sdb.AddBalanceResponse
-	AddRefundRequest          = sdb.AddRefundRequest
-	AddRefundResponse         = sdb.AddRefundResponse
-	CreateAccountRequest      = sdb.CreateAccountRequest
-	CreateAccountResponse     = sdb.CreateAccountResponse
-	EmptyRequest              = sdb.EmptyRequest
-	EmptyResponse             = sdb.EmptyResponse
-	ExistRequest              = sdb.ExistRequest
-	ExistResponse             = sdb.ExistResponse
-	GetBalanceRequest         = sdb.GetBalanceRequest
-	GetBalanceResponse        = sdb.GetBalanceResponse
-	GetCodeHashRequest        = sdb.GetCodeHashRequest
-	GetCodeHashResponse       = sdb.GetCodeHashResponse
-	GetCodeRequest            = sdb.GetCodeRequest
-	GetCodeResponse           = sdb.GetCodeResponse
-	GetCodeSizeRequest        = sdb.GetCodeSizeRequest
-	GetCodeSizeResponse       = sdb.GetCodeSizeResponse
-	GetNonceRequest           = sdb.GetNonceRequest
-	GetNonceResponse          = sdb.GetNonceResponse
-	GetRefundRequest          = sdb.GetRefundRequest
-	GetRefundResponse         = sdb.GetRefundResponse
-	GetTransientStateRequest  = sdb.GetTransientStateRequest
-	GetTransientStateResponse = sdb.GetTransientStateResponse
-	HasSuicidedRequest        = sdb.HasSuicidedRequest
-	HasSuicidedResponse       = sdb.HasSuicidedResponse
-	SetCodeRequest            = sdb.SetCodeRequest
-	SetCodeResponse           = sdb.SetCodeResponse
-	SetNonceRequest           = sdb.SetNonceRequest
-	SetNonceResponse          = sdb.SetNonceResponse
-	SetTransientStateRequest  = sdb.SetTransientStateRequest
-	SetTransientStateResponse = sdb.SetTransientStateResponse
-	SubBalanceRequest         = sdb.SubBalanceRequest
-	SubBalanceResponse        = sdb.SubBalanceResponse
-	SubRefundRequest          = sdb.SubRefundRequest
-	SubRefundResponse         = sdb.SubRefundResponse
-	SuicideRequest            = sdb.SuicideRequest
-	SuicideResponse           = sdb.SuicideResponse
+	AddAddressToAccessListRequest  = sdb.AddAddressToAccessListRequest
+	AddAddressToAccessListResponse = sdb.AddAddressToAccessListResponse
+	AddBalanceRequest              = sdb.AddBalanceRequest
+	AddBalanceResponse             = sdb.AddBalanceResponse
+	AddPreimageRequest             = sdb.AddPreimageRequest
+	AddPreimageResponse            = sdb.AddPreimageResponse
+	AddRefundRequest               = sdb.AddRefundRequest
+	AddRefundResponse              = sdb.AddRefundResponse
+	AddSlotToAccessListRequest     = sdb.AddSlotToAccessListRequest
+	AddSlotToAccessListResponse    = sdb.AddSlotToAccessListResponse
+	AddressInAccessListRequest     = sdb.AddressInAccessListRequest
+	AddressInAccessListResponse    = sdb.AddressInAccessListResponse
+	CreateAccountRequest           = sdb.CreateAccountRequest
+	CreateAccountResponse          = sdb.CreateAccountResponse
+	EmptyRequest                   = sdb.EmptyRequest
+	EmptyResponse                  = sdb.EmptyResponse
+	ExistRequest                   = sdb.ExistRequest
+	ExistResponse                  = sdb.ExistResponse
+	GetBalanceRequest              = sdb.GetBalanceRequest
+	GetBalanceResponse             = sdb.GetBalanceResponse
+	GetCodeHashRequest             = sdb.GetCodeHashRequest
+	GetCodeHashResponse            = sdb.GetCodeHashResponse
+	GetCodeRequest                 = sdb.GetCodeRequest
+	GetCodeResponse                = sdb.GetCodeResponse
+	GetCodeSizeRequest             = sdb.GetCodeSizeRequest
+	GetCodeSizeResponse            = sdb.GetCodeSizeResponse
+	GetNonceRequest                = sdb.GetNonceRequest
+	GetNonceResponse               = sdb.GetNonceResponse
+	GetRefundRequest               = sdb.GetRefundRequest
+	GetRefundResponse              = sdb.GetRefundResponse
+	GetTransientStateRequest       = sdb.GetTransientStateRequest
+	GetTransientStateResponse      = sdb.GetTransientStateResponse
+	HasSuicidedRequest             = sdb.HasSuicidedRequest
+	HasSuicidedResponse            = sdb.HasSuicidedResponse
+	RevertToSnapshotRequest        = sdb.RevertToSnapshotRequest
+	RevertToSnapshotResponse       = sdb.RevertToSnapshotResponse
+	SetCodeRequest                 = sdb.SetCodeRequest
+	SetCodeResponse                = sdb.SetCodeResponse
+	SetNonceRequest                = sdb.SetNonceRequest
+	SetNonceResponse               = sdb.SetNonceResponse
+	SetTransientStateRequest       = sdb.SetTransientStateRequest
+	SetTransientStateResponse      = sdb.SetTransientStateResponse
+	SlotInAccessListRequest        = sdb.SlotInAccessListRequest
+	SlotInAccessListResponse       = sdb.SlotInAccessListResponse
+	SnapshotRequest                = sdb.SnapshotRequest
+	SnapshotResponse               = sdb.SnapshotResponse
+	SubBalanceRequest              = sdb.SubBalanceRequest
+	SubBalanceResponse             = sdb.SubBalanceResponse
+	SubRefundRequest               = sdb.SubRefundRequest
+	SubRefundResponse              = sdb.SubRefundResponse
+	SuicideRequest                 = sdb.SuicideRequest
+	SuicideResponse                = sdb.SuicideResponse
 
 	Sdb interface {
 		CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
@@ -72,6 +86,13 @@ type (
 		SetTransientState(ctx context.Context, in *SetTransientStateRequest, opts ...grpc.CallOption) (*SetTransientStateResponse, error)
 		Exist(ctx context.Context, in *ExistRequest, opts ...grpc.CallOption) (*ExistResponse, error)
 		Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error)
+		AddressInAccessList(ctx context.Context, in *AddressInAccessListRequest, opts ...grpc.CallOption) (*AddressInAccessListResponse, error)
+		SlotInAccessList(ctx context.Context, in *SlotInAccessListRequest, opts ...grpc.CallOption) (*SlotInAccessListResponse, error)
+		AddAddressToAccessList(ctx context.Context, in *AddAddressToAccessListRequest, opts ...grpc.CallOption) (*AddAddressToAccessListResponse, error)
+		AddSlotToAccessList(ctx context.Context, in *AddSlotToAccessListRequest, opts ...grpc.CallOption) (*AddSlotToAccessListResponse, error)
+		RevertToSnapshot(ctx context.Context, in *RevertToSnapshotRequest, opts ...grpc.CallOption) (*RevertToSnapshotResponse, error)
+		Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
+		AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 	}
 
 	defaultSdb struct {
@@ -178,4 +199,39 @@ func (m *defaultSdb) Exist(ctx context.Context, in *ExistRequest, opts ...grpc.C
 func (m *defaultSdb) Empty(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*EmptyResponse, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.Empty(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddressInAccessList(ctx context.Context, in *AddressInAccessListRequest, opts ...grpc.CallOption) (*AddressInAccessListResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddressInAccessList(ctx, in, opts...)
+}
+
+func (m *defaultSdb) SlotInAccessList(ctx context.Context, in *SlotInAccessListRequest, opts ...grpc.CallOption) (*SlotInAccessListResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.SlotInAccessList(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddAddressToAccessList(ctx context.Context, in *AddAddressToAccessListRequest, opts ...grpc.CallOption) (*AddAddressToAccessListResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddAddressToAccessList(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddSlotToAccessList(ctx context.Context, in *AddSlotToAccessListRequest, opts ...grpc.CallOption) (*AddSlotToAccessListResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddSlotToAccessList(ctx, in, opts...)
+}
+
+func (m *defaultSdb) RevertToSnapshot(ctx context.Context, in *RevertToSnapshotRequest, opts ...grpc.CallOption) (*RevertToSnapshotResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.RevertToSnapshot(ctx, in, opts...)
+}
+
+func (m *defaultSdb) Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.Snapshot(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddPreimage(ctx, in, opts...)
 }

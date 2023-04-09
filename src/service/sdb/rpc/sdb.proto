@@ -141,6 +141,59 @@ message EmptyResponse {
     bool Is_Empty = 1;
 }
 
+message AddressInAccessListRequest {
+    string Addr = 1;
+}
+message AddressInAccessListResponse {
+    bool Is_in = 1;
+}
+
+message SlotInAccessListRequest {
+    string Addr = 1;
+    string Hash = 2;
+}
+message SlotInAccessListResponse {
+    bool Addr_ok = 1;
+    bool Slot_ok = 2; 
+}
+
+message AddAddressToAccessListRequest {
+    string Addr = 1;
+}
+message AddAddressToAccessListResponse {
+
+}
+
+message AddSlotToAccessListRequest {
+    string Addr = 1;
+    string Slot = 2;
+}
+message AddSlotToAccessListResponse {
+
+}
+
+message RevertToSnapshotRequest {
+    int32 Revid = 1;
+}
+message RevertToSnapshotResponse {
+
+}
+
+message SnapshotRequest {
+
+}
+message SnapshotResponse {
+    int32 Revid = 1;
+}
+
+message AddPreimageRequest {
+    string Hash = 1;
+    string Preimage = 2;
+}
+message AddPreimageResponse {
+
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -168,4 +221,14 @@ service Sdb {
 
     rpc Exist(ExistRequest) returns(ExistResponse);
     rpc Empty(EmptyRequest) returns(EmptyResponse);
+
+    rpc AddressInAccessList(AddressInAccessListRequest) returns(AddressInAccessListResponse);
+    rpc SlotInAccessList(SlotInAccessListRequest) returns(SlotInAccessListResponse);
+    rpc AddAddressToAccessList(AddAddressToAccessListRequest) returns(AddAddressToAccessListResponse);
+    rpc AddSlotToAccessList(AddSlotToAccessListRequest) returns(AddSlotToAccessListResponse);
+
+    rpc RevertToSnapshot(RevertToSnapshotRequest) returns(RevertToSnapshotResponse);
+    rpc Snapshot(SnapshotRequest) returns(SnapshotResponse);
+
+    rpc AddPreimage(AddPreimageRequest) returns(AddPreimageResponse);
 }

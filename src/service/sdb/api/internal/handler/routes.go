@@ -107,6 +107,41 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/sdb/empty",
 				Handler: EmptyHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addressinaccresslist",
+				Handler: AddressInAccessListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/slotinaccesslist",
+				Handler: SlotInAccessListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addaddresstoaccesslist",
+				Handler: AddAddressToAccessListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addslottoaccesslist",
+				Handler: AddSlotToAccessListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/reverttosnapshot",
+				Handler: RevertToSnapshotHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/snapshot",
+				Handler: SnapshotHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addpreimage",
+				Handler: AddPreimageHandler(serverCtx),
+			},
 		},
 	)
 }

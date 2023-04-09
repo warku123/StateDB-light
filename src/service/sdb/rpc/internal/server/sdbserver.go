@@ -116,3 +116,38 @@ func (s *SdbServer) Empty(ctx context.Context, in *sdb.EmptyRequest) (*sdb.Empty
 	l := logic.NewEmptyLogic(ctx, s.svcCtx)
 	return l.Empty(in)
 }
+
+func (s *SdbServer) AddressInAccessList(ctx context.Context, in *sdb.AddressInAccessListRequest) (*sdb.AddressInAccessListResponse, error) {
+	l := logic.NewAddressInAccessListLogic(ctx, s.svcCtx)
+	return l.AddressInAccessList(in)
+}
+
+func (s *SdbServer) SlotInAccessList(ctx context.Context, in *sdb.SlotInAccessListRequest) (*sdb.SlotInAccessListResponse, error) {
+	l := logic.NewSlotInAccessListLogic(ctx, s.svcCtx)
+	return l.SlotInAccessList(in)
+}
+
+func (s *SdbServer) AddAddressToAccessList(ctx context.Context, in *sdb.AddAddressToAccessListRequest) (*sdb.AddAddressToAccessListResponse, error) {
+	l := logic.NewAddAddressToAccessListLogic(ctx, s.svcCtx)
+	return l.AddAddressToAccessList(in)
+}
+
+func (s *SdbServer) AddSlotToAccessList(ctx context.Context, in *sdb.AddSlotToAccessListRequest) (*sdb.AddSlotToAccessListResponse, error) {
+	l := logic.NewAddSlotToAccessListLogic(ctx, s.svcCtx)
+	return l.AddSlotToAccessList(in)
+}
+
+func (s *SdbServer) RevertToSnapshot(ctx context.Context, in *sdb.RevertToSnapshotRequest) (*sdb.RevertToSnapshotResponse, error) {
+	l := logic.NewRevertToSnapshotLogic(ctx, s.svcCtx)
+	return l.RevertToSnapshot(in)
+}
+
+func (s *SdbServer) Snapshot(ctx context.Context, in *sdb.SnapshotRequest) (*sdb.SnapshotResponse, error) {
+	l := logic.NewSnapshotLogic(ctx, s.svcCtx)
+	return l.Snapshot(in)
+}
+
+func (s *SdbServer) AddPreimage(ctx context.Context, in *sdb.AddPreimageRequest) (*sdb.AddPreimageResponse, error) {
+	l := logic.NewAddPreimageLogic(ctx, s.svcCtx)
+	return l.AddPreimage(in)
+}
