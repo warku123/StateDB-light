@@ -194,6 +194,21 @@ message AddPreimageResponse {
 
 }
 
+message AddLogRequest {
+    string Addr = 1;
+    repeated string Topic = 2;
+    string Data = 3;
+    uint64 BlockNumber = 4;
+    string TxHash = 5;
+    uint32 TxIndex = 6;
+    string BlockHash = 7;
+    uint32 Index = 8;
+    bool Removed = 9;
+}
+message AddLogRespond {
+
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -231,4 +246,5 @@ service Sdb {
     rpc Snapshot(SnapshotRequest) returns(SnapshotResponse);
 
     rpc AddPreimage(AddPreimageRequest) returns(AddPreimageResponse);
+    rpc AddLog(AddLogRequest) returns(AddLogRespond);
 }

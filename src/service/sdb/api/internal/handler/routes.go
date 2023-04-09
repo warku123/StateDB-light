@@ -109,7 +109,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
-				Path:    "/api/sdb/addressinaccresslist",
+				Path:    "/api/sdb/addressinaccesslist",
 				Handler: AddressInAccessListHandler(serverCtx),
 			},
 			{
@@ -141,6 +141,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/api/sdb/addpreimage",
 				Handler: AddPreimageHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/addlog",
+				Handler: AddLogHandler(serverCtx),
 			},
 		},
 	)

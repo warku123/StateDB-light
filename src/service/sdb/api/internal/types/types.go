@@ -209,3 +209,18 @@ type AddPreimageRequest struct {
 
 type AddPreimageResponse struct {
 }
+
+type AddLogRequest struct {
+	Address     string   `json:"address"`
+	Topics      []string `json:"topics"`
+	Data        string   `json:"data"`
+	BlockNumber uint64   `json:"blockNumber"`
+	TxHash      string   `json:"transactionHash"`
+	TxIndex     uint     `json:"transactionIndex"`
+	BlockHash   string   `json:"blockHash"`
+	Index       uint32   `json:"logIndex"`
+	Removed     bool     `json:"removed"`
+}
+
+type AddLogResponse struct {
+}

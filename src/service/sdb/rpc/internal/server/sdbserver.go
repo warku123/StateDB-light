@@ -151,3 +151,8 @@ func (s *SdbServer) AddPreimage(ctx context.Context, in *sdb.AddPreimageRequest)
 	l := logic.NewAddPreimageLogic(ctx, s.svcCtx)
 	return l.AddPreimage(in)
 }
+
+func (s *SdbServer) AddLog(ctx context.Context, in *sdb.AddLogRequest) (*sdb.AddLogRespond, error) {
+	l := logic.NewAddLogLogic(ctx, s.svcCtx)
+	return l.AddLog(in)
+}

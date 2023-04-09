@@ -17,6 +17,8 @@ type (
 	AddAddressToAccessListResponse = sdb.AddAddressToAccessListResponse
 	AddBalanceRequest              = sdb.AddBalanceRequest
 	AddBalanceResponse             = sdb.AddBalanceResponse
+	AddLogRequest                  = sdb.AddLogRequest
+	AddLogRespond                  = sdb.AddLogRespond
 	AddPreimageRequest             = sdb.AddPreimageRequest
 	AddPreimageResponse            = sdb.AddPreimageResponse
 	AddRefundRequest               = sdb.AddRefundRequest
@@ -93,6 +95,7 @@ type (
 		RevertToSnapshot(ctx context.Context, in *RevertToSnapshotRequest, opts ...grpc.CallOption) (*RevertToSnapshotResponse, error)
 		Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
 		AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
+		AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
 	}
 
 	defaultSdb struct {
@@ -234,4 +237,9 @@ func (m *defaultSdb) Snapshot(ctx context.Context, in *SnapshotRequest, opts ...
 func (m *defaultSdb) AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.AddPreimage(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddLog(ctx, in, opts...)
 }

@@ -45,6 +45,7 @@ const (
 	Sdb_RevertToSnapshot_FullMethodName       = "/sdb.Sdb/RevertToSnapshot"
 	Sdb_Snapshot_FullMethodName               = "/sdb.Sdb/Snapshot"
 	Sdb_AddPreimage_FullMethodName            = "/sdb.Sdb/AddPreimage"
+	Sdb_AddLog_FullMethodName                 = "/sdb.Sdb/AddLog"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -77,6 +78,7 @@ type SdbClient interface {
 	RevertToSnapshot(ctx context.Context, in *RevertToSnapshotRequest, opts ...grpc.CallOption) (*RevertToSnapshotResponse, error)
 	Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
 	AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
+	AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
 }
 
 type sdbClient struct {
@@ -321,6 +323,15 @@ func (c *sdbClient) AddPreimage(ctx context.Context, in *AddPreimageRequest, opt
 	return out, nil
 }
 
+func (c *sdbClient) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error) {
+	out := new(AddLogRespond)
+	err := c.cc.Invoke(ctx, Sdb_AddLog_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -351,6 +362,7 @@ type SdbServer interface {
 	RevertToSnapshot(context.Context, *RevertToSnapshotRequest) (*RevertToSnapshotResponse, error)
 	Snapshot(context.Context, *SnapshotRequest) (*SnapshotResponse, error)
 	AddPreimage(context.Context, *AddPreimageRequest) (*AddPreimageResponse, error)
+	AddLog(context.Context, *AddLogRequest) (*AddLogRespond, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -435,6 +447,9 @@ func (UnimplementedSdbServer) Snapshot(context.Context, *SnapshotRequest) (*Snap
 }
 func (UnimplementedSdbServer) AddPreimage(context.Context, *AddPreimageRequest) (*AddPreimageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddPreimage not implemented")
+}
+func (UnimplementedSdbServer) AddLog(context.Context, *AddLogRequest) (*AddLogRespond, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddLog not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -917,6 +932,24 @@ func _Sdb_AddPreimage_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_AddLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddLogRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).AddLog(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_AddLog_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).AddLog(ctx, req.(*AddLogRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1027,6 +1060,10 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddPreimage",
 			Handler:    _Sdb_AddPreimage_Handler,
+		},
+		{
+			MethodName: "AddLog",
+			Handler:    _Sdb_AddLog_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
