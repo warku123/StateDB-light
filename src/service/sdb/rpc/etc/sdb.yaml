@@ -6,8 +6,8 @@ Etcd:
   Key: sdb.rpc
 
 BottomDB:
-  Is_memory: true
-  LevelDB_dir : "/leveldb/chaindata"
+  Is_memory: True
+  LevelDB_dir : "~/Documents/leveldb/chaindata"
 
 UpperDB:
-  Hash: "0x0000000000000000000000006465706c6f796572"
+  Hash:

@@ -1,6 +1,7 @@
 package svc
 
 import (
+	"log"
 	"statedbl/common"
 	"statedbl/core/rawdb"
 	"statedbl/core/state"
@@ -24,7 +25,11 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	}
 
 	sdb := state.NewDatabase(bottom_db)
-	statedb, _ := state.New(common.BytesToHash([]byte(c.UpperDB.Hash)), sdb, nil)
+
+	statedb, err := state.New(common.BytesToHash([]byte(c.UpperDB.Hash)), sdb, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return &ServiceContext{
 		Config:  c,
