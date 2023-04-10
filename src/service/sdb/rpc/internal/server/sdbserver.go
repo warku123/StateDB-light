@@ -156,3 +156,8 @@ func (s *SdbServer) AddLog(ctx context.Context, in *sdb.AddLogRequest) (*sdb.Add
 	l := logic.NewAddLogLogic(ctx, s.svcCtx)
 	return l.AddLog(in)
 }
+
+func (s *SdbServer) Prepare(ctx context.Context, in *sdb.PrepareRequest) (*sdb.PrepareRespond, error) {
+	l := logic.NewPrepareLogic(ctx, s.svcCtx)
+	return l.Prepare(in)
+}

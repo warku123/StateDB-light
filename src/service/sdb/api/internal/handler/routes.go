@@ -147,6 +147,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/sdb/addlog",
 				Handler: AddLogHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/api/sdb/prepare",
+				Handler: PrepareHandler(serverCtx),
+			},
 		},
 	)
 }

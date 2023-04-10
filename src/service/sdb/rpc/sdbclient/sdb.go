@@ -13,6 +13,7 @@ import (
 )
 
 type (
+	AccessTuple                    = sdb.AccessTuple
 	AddAddressToAccessListRequest  = sdb.AddAddressToAccessListRequest
 	AddAddressToAccessListResponse = sdb.AddAddressToAccessListResponse
 	AddBalanceRequest              = sdb.AddBalanceRequest
@@ -49,8 +50,11 @@ type (
 	GetTransientStateResponse      = sdb.GetTransientStateResponse
 	HasSuicidedRequest             = sdb.HasSuicidedRequest
 	HasSuicidedResponse            = sdb.HasSuicidedResponse
+	PrepareRequest                 = sdb.PrepareRequest
+	PrepareRespond                 = sdb.PrepareRespond
 	RevertToSnapshotRequest        = sdb.RevertToSnapshotRequest
 	RevertToSnapshotResponse       = sdb.RevertToSnapshotResponse
+	Rules                          = sdb.Rules
 	SetCodeRequest                 = sdb.SetCodeRequest
 	SetCodeResponse                = sdb.SetCodeResponse
 	SetNonceRequest                = sdb.SetNonceRequest
@@ -96,6 +100,7 @@ type (
 		Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
 		AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 		AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
+		Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error)
 	}
 
 	defaultSdb struct {
@@ -242,4 +247,9 @@ func (m *defaultSdb) AddPreimage(ctx context.Context, in *AddPreimageRequest, op
 func (m *defaultSdb) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.AddLog(ctx, in, opts...)
+}
+
+func (m *defaultSdb) Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.Prepare(ctx, in, opts...)
 }

@@ -224,3 +224,38 @@ type AddLogRequest struct {
 
 type AddLogResponse struct {
 }
+
+type Rules struct {
+	ChainID          string `json:"chainid"`
+	IsHomestead      bool   `json:"ishomestead"`
+	IsEIP150         bool   `json:"iseip150"`
+	IsEIP155         bool   `json:"iseip155"`
+	IsEIP158         bool   `json:"iseip158"`
+	IsByzantium      bool   `json:"isbyzantium"`
+	IsConstantinople bool   `json:"isconstantinople"`
+	IsPetersburg     bool   `json:"ispetersburg"`
+	IsIstanbul       bool   `json:"isistanbul"`
+	IsBerlin         bool   `json:"isberlin"`
+	IsLondon         bool   `json:"islondon"`
+	IsMerge          bool   `json:"ismerge"`
+	IsShanghai       bool   `json:"isshanghai"`
+	IsCancun         bool   `json:"iscancun"`
+	IsPrague         bool   `json:"isprague"`
+}
+
+type AccessTuple struct {
+	Addr        string   `json:"address"`
+	StorageKeys []string `json:"storagekeys"`
+}
+
+type PrepareRequest struct {
+	Rule         Rules         `json:"rules"`
+	SenderAddr   string        `json:"senderaddr"`
+	CoinbaseAddr string        `json:"coinbaseaddr"`
+	DestAddr     string        `json:"destaddr"`
+	PreCompiles  []string      `json:"precompiles"`
+	List         []AccessTuple `json:"list"`
+}
+
+type PrepareResponse struct {
+}

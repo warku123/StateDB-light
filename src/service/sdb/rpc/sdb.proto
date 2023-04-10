@@ -209,6 +209,41 @@ message AddLogRespond {
 
 }
 
+message Rules {
+    string ChainID = 1;
+    bool IsHomestead = 2;
+    bool IsEIP150 = 3;
+    bool IsEIP155 = 4; 
+    bool IsEIP158 = 5;
+    bool IsByzantium = 6;
+    bool IsConstantinople = 7;
+    bool IsPetersburg = 8;
+    bool IsIstanbul = 9;
+    bool IsBerlin = 10;
+    bool IsLondon = 11;
+    bool IsMerge = 12;
+    bool IsShanghai = 13;
+    bool IsCancun = 14;
+    bool IsPrague = 15;
+}
+
+message AccessTuple {
+    string Addr = 1;
+    repeated string Storage_keys = 2;
+}
+
+message PrepareRequest {
+    Rules Rule = 1;
+    string SenderAddr = 2;
+    string CoinbaseAddr = 3;
+    string DestAddr = 4;
+    repeated string PreCompiles = 5;
+    repeated AccessTuple List = 6;
+}
+message PrepareRespond {
+
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -247,4 +282,6 @@ service Sdb {
 
     rpc AddPreimage(AddPreimageRequest) returns(AddPreimageResponse);
     rpc AddLog(AddLogRequest) returns(AddLogRespond);
+
+    rpc Prepare(PrepareRequest) returns(PrepareRespond);
 }
