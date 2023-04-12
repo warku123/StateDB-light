@@ -29,6 +29,6 @@ func (l *GetCodeHashLogic) GetCodeHash(in *sdb.GetCodeHashRequest) (*sdb.GetCode
 	real_addr := common.BytesToAddress([]byte(in.Addr))
 	res := l.svcCtx.Statedb.GetCodeHash(real_addr)
 	return &sdb.GetCodeHashResponse{
-		Hash: string(res.Bytes()),
+		Hash: res.Hex(),
 	}, nil
 }
