@@ -26,7 +26,7 @@ func NewCreateAccountLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Cre
 
 func (l *CreateAccountLogic) CreateAccount(in *sdb.CreateAccountRequest) (*sdb.CreateAccountResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 	l.svcCtx.Statedb.CreateAccount(real_addr)
 
 	return &sdb.CreateAccountResponse{Empty: true}, nil

@@ -52,15 +52,15 @@ func (l *PrepareLogic) Prepare(in *sdb.PrepareRequest) (*sdb.PrepareRespond, err
 
 	real_pre_compiles := []common.Address{}
 	for _, str := range in.PreCompiles {
-		real_pre_compiles = append(real_pre_compiles, common.BytesToAddress([]byte(str)))
+		real_pre_compiles = append(real_pre_compiles, common.HexToAddress(str))
 	}
 
 	var real_list types.AccessList
 	for _, acc_tuple := range in.List {
-		real_addr := common.BytesToAddress([]byte(acc_tuple.Addr))
+		real_addr := common.HexToAddress(acc_tuple.Addr)
 		real_storage_keys := []common.Hash{}
 		for _, str_hash := range acc_tuple.StorageKeys {
-			real_storage_keys = append(real_storage_keys, common.BytesToHash([]byte(str_hash)))
+			real_storage_keys = append(real_storage_keys, common.HexToHash(str_hash))
 		}
 
 		real_acc_tuple := types.AccessTuple{
@@ -70,12 +70,12 @@ func (l *PrepareLogic) Prepare(in *sdb.PrepareRequest) (*sdb.PrepareRespond, err
 		real_list = append(real_list, real_acc_tuple)
 	}
 
-	real_destaddr := common.BytesToAddress([]byte(in.DestAddr))
+	real_destaddr := common.HexToAddress(in.DestAddr)
 
 	l.svcCtx.Statedb.Prepare(
 		real_rules,
-		common.BytesToAddress([]byte(in.SenderAddr)),
-		common.BytesToAddress([]byte(in.CoinbaseAddr)),
+		common.HexToAddress(in.SenderAddr),
+		common.HexToAddress(in.CoinbaseAddr),
 		&real_destaddr,
 		real_pre_compiles,
 		real_list,

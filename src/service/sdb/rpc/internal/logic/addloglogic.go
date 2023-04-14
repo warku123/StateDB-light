@@ -34,7 +34,7 @@ func (l *AddLogLogic) AddLog(in *sdb.AddLogRequest) (*sdb.AddLogRespond, error) 
 	}
 
 	Log := &types.Log{
-		Address:     common.BytesToAddress([]byte(in.Addr)),
+		Address:     common.HexToAddress(in.Addr),
 		Topics:      hash_list,
 		Data:        []byte(in.Data),
 		BlockNumber: in.BlockNumber,

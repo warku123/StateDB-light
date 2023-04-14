@@ -26,6 +26,6 @@ func NewAddAddressToAccessListLogic(ctx context.Context, svcCtx *svc.ServiceCont
 
 func (l *AddAddressToAccessListLogic) AddAddressToAccessList(in *sdb.AddAddressToAccessListRequest) (*sdb.AddAddressToAccessListResponse, error) {
 	// todo: add your logic here and delete this line
-	l.svcCtx.Statedb.AddAddressToAccessList(common.BytesToAddress([]byte(in.Addr)))
+	l.svcCtx.Statedb.AddAddressToAccessList(common.HexToAddress(in.Addr))
 	return &sdb.AddAddressToAccessListResponse{}, nil
 }

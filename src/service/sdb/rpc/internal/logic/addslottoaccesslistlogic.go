@@ -27,8 +27,8 @@ func NewAddSlotToAccessListLogic(ctx context.Context, svcCtx *svc.ServiceContext
 func (l *AddSlotToAccessListLogic) AddSlotToAccessList(in *sdb.AddSlotToAccessListRequest) (*sdb.AddSlotToAccessListResponse, error) {
 	// todo: add your logic here and delete this line
 	l.svcCtx.Statedb.AddSlotToAccessList(
-		common.BytesToAddress([]byte(in.Addr)),
-		common.BytesToHash([]byte(in.Slot)),
+		common.HexToAddress(in.Addr),
+		common.HexToHash(in.Slot),
 	)
 	return &sdb.AddSlotToAccessListResponse{}, nil
 }

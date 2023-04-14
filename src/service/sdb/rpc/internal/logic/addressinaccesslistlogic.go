@@ -29,7 +29,7 @@ func (l *AddressInAccessListLogic) AddressInAccessList(in *sdb.AddressInAccessLi
 
 	return &sdb.AddressInAccessListResponse{
 		IsIn: l.svcCtx.Statedb.AddressInAccessList(
-			common.BytesToAddress([]byte(in.Addr)),
+			common.HexToAddress(in.Addr),
 		),
 	}, nil
 }

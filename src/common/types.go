@@ -433,7 +433,7 @@ func (ma *MixedcaseAddress) Original() string {
 
 func StringToBig(s string) (*big.Int, error) {
 	n := new(big.Int)
-	n, ok := n.SetString("1234567890987", 10)
+	n, ok := n.SetString(s, 10)
 	if !ok {
 		return big.NewInt(-1), errors.New("SetString: error")
 	}

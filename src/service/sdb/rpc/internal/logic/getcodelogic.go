@@ -26,7 +26,7 @@ func NewGetCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCodeLo
 
 func (l *GetCodeLogic) GetCode(in *sdb.GetCodeRequest) (*sdb.GetCodeResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 	res := l.svcCtx.Statedb.GetCode(real_addr)
 	return &sdb.GetCodeResponse{
 		Code: string(res),

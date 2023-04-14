@@ -26,7 +26,7 @@ func NewEmptyLogic(ctx context.Context, svcCtx *svc.ServiceContext) *EmptyLogic 
 
 func (l *EmptyLogic) Empty(in *sdb.EmptyRequest) (*sdb.EmptyResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 
 	return &sdb.EmptyResponse{
 		Is_Empty: l.svcCtx.Statedb.Empty(real_addr),

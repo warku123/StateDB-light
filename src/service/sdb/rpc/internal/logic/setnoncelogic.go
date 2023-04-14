@@ -26,7 +26,7 @@ func NewSetNonceLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SetNonce
 
 func (l *SetNonceLogic) SetNonce(in *sdb.SetNonceRequest) (*sdb.SetNonceResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 	l.svcCtx.Statedb.SetNonce(real_addr, in.Amount)
 
 	return &sdb.SetNonceResponse{

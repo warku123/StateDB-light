@@ -26,7 +26,7 @@ func NewGetCodeSizeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCo
 
 func (l *GetCodeSizeLogic) GetCodeSize(in *sdb.GetCodeSizeRequest) (*sdb.GetCodeSizeResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 	codesize := l.svcCtx.Statedb.GetCodeSize(real_addr)
 	return &sdb.GetCodeSizeResponse{
 		Size: int32(codesize),

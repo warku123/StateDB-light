@@ -26,7 +26,7 @@ func NewGetCodeHashLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetCo
 
 func (l *GetCodeHashLogic) GetCodeHash(in *sdb.GetCodeHashRequest) (*sdb.GetCodeHashResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
+	real_addr := common.HexToAddress(in.Addr)
 	res := l.svcCtx.Statedb.GetCodeHash(real_addr)
 	return &sdb.GetCodeHashResponse{
 		Hash: res.Hex(),

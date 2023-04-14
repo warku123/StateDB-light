@@ -26,8 +26,8 @@ func NewGetTransientStateLogic(ctx context.Context, svcCtx *svc.ServiceContext) 
 
 func (l *GetTransientStateLogic) GetTransientState(in *sdb.GetTransientStateRequest) (*sdb.GetTransientStateResponse, error) {
 	// todo: add your logic here and delete this line
-	real_addr := common.BytesToAddress([]byte(in.Addr))
-	real_key := common.BytesToHash([]byte(in.Key))
+	real_addr := common.HexToAddress(in.Addr)
+	real_key := common.HexToHash(in.Key)
 
 	value := l.svcCtx.Statedb.GetTransientState(real_addr, real_key)
 
