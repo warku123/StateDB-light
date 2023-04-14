@@ -535,16 +535,3 @@ PrepareRequest {
 PrepareResponse {
 }
 ```
-
-## template
-- Method：post
-- Path：`/api/sdb/`
-- Param Type : Json
-- Param Content:
-```
-```
-- Return Value:
-```
-```
-- Example
-![]()
