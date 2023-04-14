@@ -46,6 +46,7 @@ const (
 	Sdb_Snapshot_FullMethodName               = "/sdb.Sdb/Snapshot"
 	Sdb_AddPreimage_FullMethodName            = "/sdb.Sdb/AddPreimage"
 	Sdb_AddLog_FullMethodName                 = "/sdb.Sdb/AddLog"
+	Sdb_AddLogJson_FullMethodName             = "/sdb.Sdb/AddLogJson"
 	Sdb_Prepare_FullMethodName                = "/sdb.Sdb/Prepare"
 	Sdb_GetCommittedState_FullMethodName      = "/sdb.Sdb/GetCommittedState"
 	Sdb_GetState_FullMethodName               = "/sdb.Sdb/GetState"
@@ -83,6 +84,7 @@ type SdbClient interface {
 	Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
 	AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 	AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
+	AddLogJson(ctx context.Context, in *AddLogJsonRequest, opts ...grpc.CallOption) (*AddLogJsonRespond, error)
 	Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error)
 	GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error)
 	GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error)
@@ -340,6 +342,15 @@ func (c *sdbClient) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.
 	return out, nil
 }
 
+func (c *sdbClient) AddLogJson(ctx context.Context, in *AddLogJsonRequest, opts ...grpc.CallOption) (*AddLogJsonRespond, error) {
+	out := new(AddLogJsonRespond)
+	err := c.cc.Invoke(ctx, Sdb_AddLogJson_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *sdbClient) Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error) {
 	out := new(PrepareRespond)
 	err := c.cc.Invoke(ctx, Sdb_Prepare_FullMethodName, in, out, opts...)
@@ -407,6 +418,7 @@ type SdbServer interface {
 	Snapshot(context.Context, *SnapshotRequest) (*SnapshotResponse, error)
 	AddPreimage(context.Context, *AddPreimageRequest) (*AddPreimageResponse, error)
 	AddLog(context.Context, *AddLogRequest) (*AddLogRespond, error)
+	AddLogJson(context.Context, *AddLogJsonRequest) (*AddLogJsonRespond, error)
 	Prepare(context.Context, *PrepareRequest) (*PrepareRespond, error)
 	GetCommittedState(context.Context, *GetCommittedStateRequest) (*GetCommittedStateResponse, error)
 	GetState(context.Context, *GetStateRequest) (*GetStateResponse, error)
@@ -498,6 +510,9 @@ func (UnimplementedSdbServer) AddPreimage(context.Context, *AddPreimageRequest) 
 }
 func (UnimplementedSdbServer) AddLog(context.Context, *AddLogRequest) (*AddLogRespond, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddLog not implemented")
+}
+func (UnimplementedSdbServer) AddLogJson(context.Context, *AddLogJsonRequest) (*AddLogJsonRespond, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddLogJson not implemented")
 }
 func (UnimplementedSdbServer) Prepare(context.Context, *PrepareRequest) (*PrepareRespond, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Prepare not implemented")
@@ -1010,6 +1025,24 @@ func _Sdb_AddLog_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_AddLogJson_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddLogJsonRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).AddLogJson(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_AddLogJson_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).AddLogJson(ctx, req.(*AddLogJsonRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Sdb_Prepare_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(PrepareRequest)
 	if err := dec(in); err != nil {
@@ -1196,6 +1229,10 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddLog",
 			Handler:    _Sdb_AddLog_Handler,
+		},
+		{
+			MethodName: "AddLogJson",
+			Handler:    _Sdb_AddLogJson_Handler,
 		},
 		{
 			MethodName: "Prepare",

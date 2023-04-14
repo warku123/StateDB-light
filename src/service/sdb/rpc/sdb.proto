@@ -209,6 +209,13 @@ message AddLogRespond {
 
 }
 
+message AddLogJsonRequest {
+    string Json = 1;
+}
+message AddLogJsonRespond {
+
+}
+
 message Rules {
     string ChainID = 1;
     bool IsHomestead = 2;
@@ -307,6 +314,7 @@ service Sdb {
 
     rpc AddPreimage(AddPreimageRequest) returns(AddPreimageResponse);
     rpc AddLog(AddLogRequest) returns(AddLogRespond);
+    rpc AddLogJson(AddLogJsonRequest) returns(AddLogJsonRespond);
 
     rpc Prepare(PrepareRequest) returns(PrepareRespond);
 

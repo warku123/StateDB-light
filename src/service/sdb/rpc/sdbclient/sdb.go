@@ -18,6 +18,8 @@ type (
 	AddAddressToAccessListResponse = sdb.AddAddressToAccessListResponse
 	AddBalanceRequest              = sdb.AddBalanceRequest
 	AddBalanceResponse             = sdb.AddBalanceResponse
+	AddLogJsonRequest              = sdb.AddLogJsonRequest
+	AddLogJsonRespond              = sdb.AddLogJsonRespond
 	AddLogRequest                  = sdb.AddLogRequest
 	AddLogRespond                  = sdb.AddLogRespond
 	AddPreimageRequest             = sdb.AddPreimageRequest
@@ -106,6 +108,7 @@ type (
 		Snapshot(ctx context.Context, in *SnapshotRequest, opts ...grpc.CallOption) (*SnapshotResponse, error)
 		AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 		AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
+		AddLogJson(ctx context.Context, in *AddLogJsonRequest, opts ...grpc.CallOption) (*AddLogJsonRespond, error)
 		Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error)
 		GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error)
 		GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error)
@@ -256,6 +259,11 @@ func (m *defaultSdb) AddPreimage(ctx context.Context, in *AddPreimageRequest, op
 func (m *defaultSdb) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.AddLog(ctx, in, opts...)
+}
+
+func (m *defaultSdb) AddLogJson(ctx context.Context, in *AddLogJsonRequest, opts ...grpc.CallOption) (*AddLogJsonRespond, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.AddLogJson(ctx, in, opts...)
 }
 
 func (m *defaultSdb) Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error) {
