@@ -244,6 +244,31 @@ message PrepareRespond {
 
 }
 
+message GetCommittedStateRequest {
+    string Addr = 1;
+    string Hash = 2;
+}
+message GetCommittedStateResponse {
+    string Hash = 1;
+}
+
+message GetStateRequest {
+    string Addr = 1;
+    string Hash = 2;
+}
+message GetStateResponse {
+    string Hash = 1;
+}
+
+message SetStateRequest {
+    string Addr = 1;
+    string Key = 2;
+    string Value = 3;
+}
+message SetStateResponse {
+
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -284,4 +309,8 @@ service Sdb {
     rpc AddLog(AddLogRequest) returns(AddLogRespond);
 
     rpc Prepare(PrepareRequest) returns(PrepareRespond);
+
+    rpc GetCommittedState(GetCommittedStateRequest) returns(GetCommittedStateResponse);
+    rpc GetState(GetStateRequest) returns(GetStateResponse);
+    rpc SetState(SetStateRequest) returns(SetStateResponse);
 }

@@ -42,10 +42,14 @@ type (
 	GetCodeResponse                = sdb.GetCodeResponse
 	GetCodeSizeRequest             = sdb.GetCodeSizeRequest
 	GetCodeSizeResponse            = sdb.GetCodeSizeResponse
+	GetCommittedStateRequest       = sdb.GetCommittedStateRequest
+	GetCommittedStateResponse      = sdb.GetCommittedStateResponse
 	GetNonceRequest                = sdb.GetNonceRequest
 	GetNonceResponse               = sdb.GetNonceResponse
 	GetRefundRequest               = sdb.GetRefundRequest
 	GetRefundResponse              = sdb.GetRefundResponse
+	GetStateRequest                = sdb.GetStateRequest
+	GetStateResponse               = sdb.GetStateResponse
 	GetTransientStateRequest       = sdb.GetTransientStateRequest
 	GetTransientStateResponse      = sdb.GetTransientStateResponse
 	HasSuicidedRequest             = sdb.HasSuicidedRequest
@@ -59,6 +63,8 @@ type (
 	SetCodeResponse                = sdb.SetCodeResponse
 	SetNonceRequest                = sdb.SetNonceRequest
 	SetNonceResponse               = sdb.SetNonceResponse
+	SetStateRequest                = sdb.SetStateRequest
+	SetStateResponse               = sdb.SetStateResponse
 	SetTransientStateRequest       = sdb.SetTransientStateRequest
 	SetTransientStateResponse      = sdb.SetTransientStateResponse
 	SlotInAccessListRequest        = sdb.SlotInAccessListRequest
@@ -101,6 +107,9 @@ type (
 		AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 		AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
 		Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error)
+		GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error)
+		GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error)
+		SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error)
 	}
 
 	defaultSdb struct {
@@ -252,4 +261,19 @@ func (m *defaultSdb) AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc
 func (m *defaultSdb) Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.Prepare(ctx, in, opts...)
+}
+
+func (m *defaultSdb) GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.GetCommittedState(ctx, in, opts...)
+}
+
+func (m *defaultSdb) GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.GetState(ctx, in, opts...)
+}
+
+func (m *defaultSdb) SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.SetState(ctx, in, opts...)
 }

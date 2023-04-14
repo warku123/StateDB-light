@@ -47,6 +47,9 @@ const (
 	Sdb_AddPreimage_FullMethodName            = "/sdb.Sdb/AddPreimage"
 	Sdb_AddLog_FullMethodName                 = "/sdb.Sdb/AddLog"
 	Sdb_Prepare_FullMethodName                = "/sdb.Sdb/Prepare"
+	Sdb_GetCommittedState_FullMethodName      = "/sdb.Sdb/GetCommittedState"
+	Sdb_GetState_FullMethodName               = "/sdb.Sdb/GetState"
+	Sdb_SetState_FullMethodName               = "/sdb.Sdb/SetState"
 )
 
 // SdbClient is the client API for Sdb service.
@@ -81,6 +84,9 @@ type SdbClient interface {
 	AddPreimage(ctx context.Context, in *AddPreimageRequest, opts ...grpc.CallOption) (*AddPreimageResponse, error)
 	AddLog(ctx context.Context, in *AddLogRequest, opts ...grpc.CallOption) (*AddLogRespond, error)
 	Prepare(ctx context.Context, in *PrepareRequest, opts ...grpc.CallOption) (*PrepareRespond, error)
+	GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error)
+	GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error)
+	SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error)
 }
 
 type sdbClient struct {
@@ -343,6 +349,33 @@ func (c *sdbClient) Prepare(ctx context.Context, in *PrepareRequest, opts ...grp
 	return out, nil
 }
 
+func (c *sdbClient) GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error) {
+	out := new(GetCommittedStateResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetCommittedState_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error) {
+	out := new(GetStateResponse)
+	err := c.cc.Invoke(ctx, Sdb_GetState_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sdbClient) SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error) {
+	out := new(SetStateResponse)
+	err := c.cc.Invoke(ctx, Sdb_SetState_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SdbServer is the server API for Sdb service.
 // All implementations must embed UnimplementedSdbServer
 // for forward compatibility
@@ -375,6 +408,9 @@ type SdbServer interface {
 	AddPreimage(context.Context, *AddPreimageRequest) (*AddPreimageResponse, error)
 	AddLog(context.Context, *AddLogRequest) (*AddLogRespond, error)
 	Prepare(context.Context, *PrepareRequest) (*PrepareRespond, error)
+	GetCommittedState(context.Context, *GetCommittedStateRequest) (*GetCommittedStateResponse, error)
+	GetState(context.Context, *GetStateRequest) (*GetStateResponse, error)
+	SetState(context.Context, *SetStateRequest) (*SetStateResponse, error)
 	mustEmbedUnimplementedSdbServer()
 }
 
@@ -465,6 +501,15 @@ func (UnimplementedSdbServer) AddLog(context.Context, *AddLogRequest) (*AddLogRe
 }
 func (UnimplementedSdbServer) Prepare(context.Context, *PrepareRequest) (*PrepareRespond, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Prepare not implemented")
+}
+func (UnimplementedSdbServer) GetCommittedState(context.Context, *GetCommittedStateRequest) (*GetCommittedStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCommittedState not implemented")
+}
+func (UnimplementedSdbServer) GetState(context.Context, *GetStateRequest) (*GetStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetState not implemented")
+}
+func (UnimplementedSdbServer) SetState(context.Context, *SetStateRequest) (*SetStateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetState not implemented")
 }
 func (UnimplementedSdbServer) mustEmbedUnimplementedSdbServer() {}
 
@@ -983,6 +1028,60 @@ func _Sdb_Prepare_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Sdb_GetCommittedState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommittedStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetCommittedState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetCommittedState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetCommittedState(ctx, req.(*GetCommittedStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_GetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).GetState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_GetState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).GetState(ctx, req.(*GetStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Sdb_SetState_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetStateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SdbServer).SetState(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Sdb_SetState_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SdbServer).SetState(ctx, req.(*SetStateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Sdb_ServiceDesc is the grpc.ServiceDesc for Sdb service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1101,6 +1200,18 @@ var Sdb_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Prepare",
 			Handler:    _Sdb_Prepare_Handler,
+		},
+		{
+			MethodName: "GetCommittedState",
+			Handler:    _Sdb_GetCommittedState_Handler,
+		},
+		{
+			MethodName: "GetState",
+			Handler:    _Sdb_GetState_Handler,
+		},
+		{
+			MethodName: "SetState",
+			Handler:    _Sdb_SetState_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

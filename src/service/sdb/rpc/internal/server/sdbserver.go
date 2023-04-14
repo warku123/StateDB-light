@@ -161,3 +161,18 @@ func (s *SdbServer) Prepare(ctx context.Context, in *sdb.PrepareRequest) (*sdb.P
 	l := logic.NewPrepareLogic(ctx, s.svcCtx)
 	return l.Prepare(in)
 }
+
+func (s *SdbServer) GetCommittedState(ctx context.Context, in *sdb.GetCommittedStateRequest) (*sdb.GetCommittedStateResponse, error) {
+	l := logic.NewGetCommittedStateLogic(ctx, s.svcCtx)
+	return l.GetCommittedState(in)
+}
+
+func (s *SdbServer) GetState(ctx context.Context, in *sdb.GetStateRequest) (*sdb.GetStateResponse, error) {
+	l := logic.NewGetStateLogic(ctx, s.svcCtx)
+	return l.GetState(in)
+}
+
+func (s *SdbServer) SetState(ctx context.Context, in *sdb.SetStateRequest) (*sdb.SetStateResponse, error) {
+	l := logic.NewSetStateLogic(ctx, s.svcCtx)
+	return l.SetState(in)
+}
