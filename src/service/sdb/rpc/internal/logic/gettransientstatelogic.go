@@ -32,6 +32,6 @@ func (l *GetTransientStateLogic) GetTransientState(in *sdb.GetTransientStateRequ
 	value := l.svcCtx.Statedb.GetTransientState(real_addr, real_key)
 
 	return &sdb.GetTransientStateResponse{
-		Value: value.String(),
+		Value: value.Hex(),
 	}, nil
 }
