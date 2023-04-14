@@ -13,7 +13,7 @@ message CreateAccountResponse {
 
 message SubBalanceRequest {
     string Addr = 1;
-    int64 Amount = 2;
+    string Amount = 2;
 }
 message SubBalanceResponse {
     bool Empty = 1;
@@ -21,7 +21,7 @@ message SubBalanceResponse {
 
 message AddBalanceRequest {
     string Addr = 1;
-    int64 Amount = 2;
+    string Amount = 2;
 }
 message AddBalanceResponse {
     bool Empty = 1;

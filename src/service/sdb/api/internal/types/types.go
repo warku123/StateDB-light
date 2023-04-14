@@ -11,7 +11,7 @@ type CreateAccountResponse struct {
 
 type SubBalanceRequest struct {
 	Addr   string `json:"address"`
-	Amount int64  `json:"amount"`
+	Amount string `json:"amount"`
 }
 
 type SubBalanceResponse struct {
@@ -20,7 +20,7 @@ type SubBalanceResponse struct {
 
 type AddBalanceRequest struct {
 	Addr   string `json:"address"`
-	Amount int64  `json:"amount"`
+	Amount string `json:"amount"`
 }
 
 type AddBalanceResponse struct {

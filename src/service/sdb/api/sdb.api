@@ -8,7 +8,7 @@ type (
 
 	SubBalanceRequest {
 		Addr   string `json:"address"`
-		Amount int64  `json:"amount"`
+		Amount string `json:"amount"`
 	}
 	SubBalanceResponse {
 		Empty bool `json:"empty"`
@@ -16,7 +16,7 @@ type (
 
 	AddBalanceRequest {
 		Addr   string `json:"address"`
-		Amount int64  `json:"amount"`
+		Amount string `json:"amount"`
 	}
 	AddBalanceResponse {
 		Empty bool `json:"empty"`

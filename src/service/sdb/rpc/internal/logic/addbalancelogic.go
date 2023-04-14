@@ -2,7 +2,6 @@ package logic
 
 import (
 	"context"
-	"math/big"
 
 	"statedbl/common"
 	"statedbl/service/sdb/rpc/internal/svc"
@@ -28,7 +27,8 @@ func NewAddBalanceLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddBal
 func (l *AddBalanceLogic) AddBalance(in *sdb.AddBalanceRequest) (*sdb.AddBalanceResponse, error) {
 	// todo: add your logic here and delete this line
 	real_addr := common.HexToAddress(in.Addr)
-	l.svcCtx.Statedb.AddBalance(real_addr, big.NewInt(in.Amount))
+	amount, _ := common.StringToBig(in.Amount)
+	l.svcCtx.Statedb.AddBalance(real_addr, amount)
 
 	return &sdb.AddBalanceResponse{Empty: true}, nil
 }
