@@ -74,12 +74,12 @@ message GetCodeRequest {
     string Addr = 1;
 }
 message GetCodeResponse {
-    string Code = 1;
+    bytes Code = 1;
 }
 
 message SetCodeRequest {
     string Addr = 1;
-    string Code = 2;
+    bytes Code = 2;
 }
 message SetCodeResponse {
 
@@ -188,7 +188,7 @@ message SnapshotResponse {
 
 message AddPreimageRequest {
     string Hash = 1;
-    string Preimage = 2;
+    bytes Preimage = 2;
 }
 message AddPreimageResponse {
 
@@ -276,6 +276,14 @@ message SetStateResponse {
 
 }
 
+message SetTxContextRequest {
+    string TxHash = 1;
+    int32 Index = 2;
+}
+message SetTxContextResponse {
+
+}
+
 service Sdb {
     rpc CreateAccount(CreateAccountRequest) returns(CreateAccountResponse);
 
@@ -321,4 +329,5 @@ service Sdb {
     rpc GetCommittedState(GetCommittedStateRequest) returns(GetCommittedStateResponse);
     rpc GetState(GetStateRequest) returns(GetStateResponse);
     rpc SetState(SetStateRequest) returns(SetStateResponse);
+    rpc SetTxContext(SetTxContextRequest) returns(SetTxContextResponse);
 }

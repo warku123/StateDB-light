@@ -35,6 +35,6 @@ func (l *GetCodeLogic) GetCode(req *types.GetCodeRequest) (resp *types.GetCodeRe
 	}
 
 	return &types.GetCodeResponse{
-		Code: res.Code,
+		Code: string(res.Code),
 	}, nil
 }

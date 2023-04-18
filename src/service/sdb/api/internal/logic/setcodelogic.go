@@ -28,7 +28,7 @@ func (l *SetCodeLogic) SetCode(req *types.SetCodeRequest) (resp *types.SetCodeRe
 	// todo: add your logic here and delete this line
 	_, err = l.svcCtx.SdbRpc.SetCode(l.ctx, &sdb.SetCodeRequest{
 		Addr: req.Addr,
-		Code: req.Code,
+		Code: []byte(req.Code),
 	})
 
 	if err != nil {

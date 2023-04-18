@@ -27,6 +27,6 @@ func NewSetCodeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SetCodeLo
 func (l *SetCodeLogic) SetCode(in *sdb.SetCodeRequest) (*sdb.SetCodeResponse, error) {
 	// todo: add your logic here and delete this line
 	real_addr := common.HexToAddress(in.Addr)
-	l.svcCtx.Statedb.SetCode(real_addr, []byte(in.Code))
+	l.svcCtx.Statedb.SetCode(real_addr, in.Code)
 	return &sdb.SetCodeResponse{}, nil
 }

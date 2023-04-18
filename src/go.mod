@@ -1,6 +1,6 @@
 module statedbl
 
-go 1.20
+go 1.19
 
 require (
 	github.com/VictoriaMetrics/fastcache v1.12.1

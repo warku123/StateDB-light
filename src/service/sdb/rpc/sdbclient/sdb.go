@@ -69,6 +69,8 @@ type (
 	SetStateResponse               = sdb.SetStateResponse
 	SetTransientStateRequest       = sdb.SetTransientStateRequest
 	SetTransientStateResponse      = sdb.SetTransientStateResponse
+	SetTxContextRequest            = sdb.SetTxContextRequest
+	SetTxContextResponse           = sdb.SetTxContextResponse
 	SlotInAccessListRequest        = sdb.SlotInAccessListRequest
 	SlotInAccessListResponse       = sdb.SlotInAccessListResponse
 	SnapshotRequest                = sdb.SnapshotRequest
@@ -113,6 +115,7 @@ type (
 		GetCommittedState(ctx context.Context, in *GetCommittedStateRequest, opts ...grpc.CallOption) (*GetCommittedStateResponse, error)
 		GetState(ctx context.Context, in *GetStateRequest, opts ...grpc.CallOption) (*GetStateResponse, error)
 		SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error)
+		SetTxContext(ctx context.Context, in *SetTxContextRequest, opts ...grpc.CallOption) (*SetTxContextResponse, error)
 	}
 
 	defaultSdb struct {
@@ -284,4 +287,9 @@ func (m *defaultSdb) GetState(ctx context.Context, in *GetStateRequest, opts ...
 func (m *defaultSdb) SetState(ctx context.Context, in *SetStateRequest, opts ...grpc.CallOption) (*SetStateResponse, error) {
 	client := sdb.NewSdbClient(m.cli.Conn())
 	return client.SetState(ctx, in, opts...)
+}
+
+func (m *defaultSdb) SetTxContext(ctx context.Context, in *SetTxContextRequest, opts ...grpc.CallOption) (*SetTxContextResponse, error) {
+	client := sdb.NewSdbClient(m.cli.Conn())
+	return client.SetTxContext(ctx, in, opts...)
 }

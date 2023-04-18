@@ -181,3 +181,8 @@ func (s *SdbServer) SetState(ctx context.Context, in *sdb.SetStateRequest) (*sdb
 	l := logic.NewSetStateLogic(ctx, s.svcCtx)
 	return l.SetState(in)
 }
+
+func (s *SdbServer) SetTxContext(ctx context.Context, in *sdb.SetTxContextRequest) (*sdb.SetTxContextResponse, error) {
+	l := logic.NewSetTxContextLogic(ctx, s.svcCtx)
+	return l.SetTxContext(in)
+}

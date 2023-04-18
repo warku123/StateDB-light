@@ -29,6 +29,6 @@ func (l *GetCodeLogic) GetCode(in *sdb.GetCodeRequest) (*sdb.GetCodeResponse, er
 	real_addr := common.HexToAddress(in.Addr)
 	res := l.svcCtx.Statedb.GetCode(real_addr)
 	return &sdb.GetCodeResponse{
-		Code: string(res),
+		Code: res,
 	}, nil
 }

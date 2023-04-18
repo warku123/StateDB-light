@@ -28,7 +28,7 @@ func (l *AddPreimageLogic) AddPreimage(req *types.AddPreimageRequest) (resp *typ
 	// todo: add your logic here and delete this line
 	_, err = l.svcCtx.SdbRpc.AddPreimage(l.ctx, &sdb.AddPreimageRequest{
 		Hash:     req.Hash,
-		Preimage: req.Preimage,
+		Preimage: []byte(req.Preimage),
 	})
 
 	if err != nil {
