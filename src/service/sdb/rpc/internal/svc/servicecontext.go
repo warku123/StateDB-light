@@ -26,7 +26,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 
 	sdb := state.NewDatabase(bottom_db)
 
-	statedb, err := state.New(common.BytesToHash([]byte(c.UpperDB.Hash)), sdb, nil)
+	statedb, err := state.New(common.HexToHash(c.UpperDB.Hash), sdb, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
