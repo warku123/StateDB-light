@@ -30,7 +30,7 @@ func (l *AddLogLogic) AddLog(in *sdb.AddLogRequest) (*sdb.AddLogRespond, error) 
 	hash_list := []common.Hash{}
 	for _, str := range in.Topic {
 		hash_list = append(hash_list,
-			common.BytesToHash([]byte(str)))
+			common.HexToHash(str))
 	}
 
 	Log := &types.Log{
@@ -38,9 +38,9 @@ func (l *AddLogLogic) AddLog(in *sdb.AddLogRequest) (*sdb.AddLogRespond, error) 
 		Topics:      hash_list,
 		Data:        []byte(in.Data),
 		BlockNumber: in.BlockNumber,
-		TxHash:      common.BytesToHash([]byte(in.TxHash)),
+		TxHash:      common.HexToHash(in.TxHash),
 		TxIndex:     uint(in.TxIndex),
-		BlockHash:   common.BytesToHash([]byte(in.BlockHash)),
+		BlockHash:   common.HexToHash(in.BlockHash),
 		Index:       uint(in.Index),
 		Removed:     in.Removed,
 	}

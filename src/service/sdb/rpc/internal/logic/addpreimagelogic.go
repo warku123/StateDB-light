@@ -27,7 +27,7 @@ func NewAddPreimageLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddPr
 func (l *AddPreimageLogic) AddPreimage(in *sdb.AddPreimageRequest) (*sdb.AddPreimageResponse, error) {
 	// todo: add your logic here and delete this line
 	l.svcCtx.Statedb.AddPreimage(
-		common.BytesToHash([]byte(in.Hash)),
+		common.HexToHash(in.Hash),
 		[]byte(in.Preimage),
 	)
 	return &sdb.AddPreimageResponse{}, nil
