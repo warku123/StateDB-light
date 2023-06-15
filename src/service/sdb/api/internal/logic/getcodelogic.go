@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 
+	"statedbl/common"
 	"statedbl/service/sdb/api/internal/svc"
 	"statedbl/service/sdb/api/internal/types"
 	"statedbl/service/sdb/rpc/types/sdb"
@@ -35,6 +36,6 @@ func (l *GetCodeLogic) GetCode(req *types.GetCodeRequest) (resp *types.GetCodeRe
 	}
 
 	return &types.GetCodeResponse{
-		Code: string(res.Code),
+		Code: common.Bytes2Hex(res.Code),
 	}, nil
 }

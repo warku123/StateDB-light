@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 
+	"statedbl/common"
 	"statedbl/service/sdb/api/internal/svc"
 	"statedbl/service/sdb/api/internal/types"
 	"statedbl/service/sdb/rpc/types/sdb"
@@ -28,9 +29,8 @@ func (l *AddPreimageLogic) AddPreimage(req *types.AddPreimageRequest) (resp *typ
 	// todo: add your logic here and delete this line
 	_, err = l.svcCtx.SdbRpc.AddPreimage(l.ctx, &sdb.AddPreimageRequest{
 		Hash:     req.Hash,
-		Preimage: []byte(req.Preimage),
+		Preimage: common.Hex2Bytes(req.Preimage),
 	})
-
 	if err != nil {
 		return nil, err
 	}

@@ -3,6 +3,7 @@ package logic
 import (
 	"context"
 
+	"statedbl/common"
 	"statedbl/service/sdb/api/internal/svc"
 	"statedbl/service/sdb/api/internal/types"
 	"statedbl/service/sdb/rpc/types/sdb"
@@ -28,7 +29,7 @@ func (l *SetCodeLogic) SetCode(req *types.SetCodeRequest) (resp *types.SetCodeRe
 	// todo: add your logic here and delete this line
 	_, err = l.svcCtx.SdbRpc.SetCode(l.ctx, &sdb.SetCodeRequest{
 		Addr: req.Addr,
-		Code: []byte(req.Code),
+		Code: common.Hex2Bytes(req.Code),
 	})
 
 	if err != nil {
